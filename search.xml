@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>房价高</title>
+    <url>/2020/03/13/%E6%88%BF%E4%BB%B7%E9%AB%98/</url>
+    <content><![CDATA[<p>范德萨范德萨发生</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>书</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>思维导图</title>
     <url>/2020/03/13/%E5%AF%BC%E5%9B%BE/</url>
     <content><![CDATA[<p>风华哥工会经费</p>
@@ -9,9 +21,10 @@
   <entry>
     <title>article</title>
     <url>/2020/03/13/article/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>哈哈哈</p>
+]]></content>
       <categories>
-        <category>�����</category>
+        <category>文章</category>
       </categories>
       <tags>
         <tag>Hexo - Markdown</tag>
