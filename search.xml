@@ -1,52 +1,1812 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>fsdsfsdf</title>
-    <url>/2020/03/13/dsfsdf/</url>
-    <content><![CDATA[<p>fdsfdsfs csvsc</p>
+    <title>机器学习入门基础（一）</title>
+    <url>/2021/06/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="机器学习简介"><a href="#机器学习简介" class="headerlink" title="机器学习简介"></a>机器学习简介</h1><p><img src="https://img-blog.csdnimg.cn/20210521214527208.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>祖师爷</strong><ul>
+<li><strong>图灵，人工智能之父，最大成就图灵测试，就是一个机器和一个人跟你聊天，你不知道对方是人还是机器，如果经过聊天后，你分辨不出谁是人谁是机器说明这个机器通过了图灵测试。</strong> </li>
+</ul>
+</li>
+<li><strong>人工智能和机器学习的区别？</strong><ul>
+<li><strong>机器学习就是实现人工智能的一种手段</strong></li>
+</ul>
+</li>
+<li><strong>什么是机器学习？</strong><ul>
+<li><strong>机器学习就是从【数据】自动分析获得【规律（模型）】，并利用规律对未知数据进行【预测】。</strong></li>
+</ul>
+</li>
+<li><strong>老师的理解</strong><ul>
+<li><strong>模型：</strong>   <ul>
+<li><strong>算法模型，是一个特殊的对象。该算法模型对象中已经集成或者封装好了某种形式的方程、算法。（还没有求出解的方程）</strong></li>
+</ul>
+</li>
+<li><strong>模型的作用：</strong><ul>
+<li><strong>预测：可以通过方程或者算法产生一个新的未知的数据 / 事务</strong> </li>
+<li><strong>分类：可以将一个未知归类的事务给其归属到一个已有的类群中</strong>  </li>
+<li><strong>注意：算法模型对应的算法或方程求出的解就是预测或分类的结果。</strong></li>
+</ul>
+</li>
+<li><strong>样本数据</strong><ul>
+<li><strong>模型的训练：将样本数据带入到模型中，对其进行训练（给方程进行求解操作），模型训练好了之后，则模型的方程就有了唯一的解或者最优解。有解后模型就可以实现分类或者预测的功能。</strong></li>
+<li><strong>构成：</strong>  <ul>
+<li><strong>特征数据：自变量（楼层、面积、采光率）</strong></li>
+<li><strong>标签 / 目标数据：因变量（售价）</strong> </li>
+<li><strong>例子：</strong><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">楼层        采光率			面积				售价</span><br><span class="line">  <span class="number">3</span>			<span class="number">55</span>%				<span class="number">100</span>				<span class="number">200</span>w</span><br><span class="line">  <span class="number">5</span>			<span class="number">88</span>%				<span class="number">100</span>				<span class="number">315</span>w</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>模型的分类</strong><pre><code>    - **有监督学习**
+        - **如果模型需要的样本数据必须包含特征数据和标签数据，则该模型为有监督学习分类** 
+    - **半监督学习**
+    - **无监督学习** 
+        - **模型需要的样本数据只需要有特征数据即可，目标数据有或者无都可以。**
+- **样本数据（数据集）的载体：**
+    - **通常情况下历史数据不会存储在数据库中，而是存储在文件中（csv文件）**    
+    - **数据库存储数据存在的问题：**
+        - **性能瓶颈：数据量级大的数据很难存储和进行高效的读写。**
+        - **数据存储格式不符合机器学习要求的数据格式** 
+- **样本数据获取的途径：**
+    - **kaggle：数据竞赛平台** 
+    - **UCI数据集：是一个常用的机器学习标准测试数据集，是加州大学欧文分校提出的用于机器学习的数据库**
+    - **sklearn**</code></pre></li>
+</ul>
+<h2 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h2><ul>
+<li><strong>特征提取</strong></li>
+<li><strong>数据特征的预处理</strong></li>
+<li><strong>特征选择</strong></li>
+</ul>
+<ul>
+<li><strong>为什么需要特征工程 ？</strong><ul>
+<li><strong>样本数据中的特征可能存在缺省值，重复值，异常值等等，那我们是需要对特征中的相关的噪点数据进行处理的，那么处理的目的就是为了营造一个更纯净的样本集，让模型基于这组数据有更好的预测能力。当然特征工程不是单单只处理上述操作。</strong></li>
+</ul>
+</li>
+<li><strong>什么是特征工程？</strong><ul>
+<li><strong>特征工程是将原始数据转换为更好的代表预测模型的潜在问题的特征的过程，从而提高未知数据预测的准确性</strong>   </li>
+<li><strong>特征工程的意义：</strong><ul>
+<li><strong>直接影响模型预测的结果</strong> </li>
+</ul>
+</li>
+<li><strong>如何实现特征工程</strong><ul>
+<li><strong>工具：sk-learn</strong></li>
+</ul>
+</li>
+<li><strong>sk-learn介绍</strong><ul>
+<li><strong>是python语言中的机器学习工具，包含了很多机器学习算法的实现，其文档完善，容易上手。</strong></li>
+<li><strong>功能：</strong><ul>
+<li><strong>分类模型</strong></li>
+<li><strong>回归模型</strong></li>
+<li><strong>聚类模型</strong></li>
+<li><strong>特征工程</strong>     </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>特征提取</strong><ul>
+<li><strong>目的：</strong><ul>
+<li><strong>我们所采集到样本中的特征数据往往很多时候为字符串或者其他类型的数据，我们知道电脑可以识别二进制数值型的数据，机器学习的数据需要的数值型的数据进行学习。</strong></li>
+<li><strong>效果演示</strong><ul>
+<li><strong>将字符串转换成数字</strong><br>In [2]:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line">vector=CountVectorizer()</span><br><span class="line">res=vector.fit_transform([<span class="string">'lift is short,i love python'</span>,<span class="string">'lift is too long,i hate python'</span>])</span><br><span class="line">print(res.toarray())</span><br><span class="line"><span class="comment">#输出结果 </span></span><br><span class="line">[[<span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span>]</span><br><span class="line">[<span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span>]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>演示后的结论</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>特征抽取对文本数据进行特征值化。特征值为了让机器更好的理解数据。</strong><ul>
+<li><strong>字典特征提取</strong></li>
+<li>作用：对字典数据进行特征值化</li>
+<li>api： from sklearn.feature_extraction.text import DictVectorizer<br>   -fit_transform(x):x为字典或者包含字典的迭代器，返回值为sparse矩阵<br> -inverse_transform(x):x为sparse矩阵或者array数组，返回值为转换之前的数据格式<br> -transform(x):按照原先的标准转换<br> -get_feature_names():返回类别名称<br>In [3]：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction <span class="keyword">import</span> DictVectorizer</span><br><span class="line"></span><br><span class="line">alist = [&#123;<span class="string">'city'</span>: <span class="string">'BeiJing'</span>, <span class="string">'temp'</span>: <span class="number">33</span>&#125;, &#123;<span class="string">'city'</span>: <span class="string">'GZ'</span>, <span class="string">'temp'</span>: <span class="number">42</span>&#125;, &#123;<span class="string">'city'</span>: <span class="string">'SH'</span>, <span class="string">'temp'</span>: <span class="number">40</span>&#125;]</span><br><span class="line"><span class="comment"># 实例化一个工具类对象</span></span><br><span class="line">d = DictVectorizer()</span><br><span class="line"><span class="comment"># 返回的是一个sparse矩阵（存储的就是特征值化的结果）</span></span><br><span class="line">feature = d.fit_transform(alist)</span><br><span class="line">print(feature)</span><br><span class="line"><span class="comment"># 输出结果： </span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">0</span>)	<span class="number">1.0</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">3</span>)	<span class="number">33.0</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">1</span>)	<span class="number">1.0</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">3</span>)	<span class="number">42.0</span></span><br><span class="line">  (<span class="number">2</span>, <span class="number">2</span>)	<span class="number">1.0</span></span><br><span class="line">  (<span class="number">2</span>, <span class="number">3</span>)	<span class="number">40.0</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>什么是sparse矩阵？</strong></li>
+</ul>
+</li>
+<li><strong>在DictVectorizer类的构造方法中设定sparse=False则返回的就不是sparse矩阵，而是一个数组。</strong> </li>
+<li><strong>sparse矩阵就是一个变相的数组或者列表，目的是为了节省内存</strong><br>In [5]：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction <span class="keyword">import</span> DictVectorizer</span><br><span class="line"></span><br><span class="line">alist = [&#123;<span class="string">'city'</span>: <span class="string">'BeiJing'</span>, <span class="string">'temp'</span>: <span class="number">33</span>&#125;, &#123;<span class="string">'city'</span>: <span class="string">'GZ'</span>, <span class="string">'temp'</span>: <span class="number">42</span>&#125;, &#123;<span class="string">'city'</span>: <span class="string">'SH'</span>, <span class="string">'temp'</span>: <span class="number">40</span>&#125;]</span><br><span class="line">d = DictVectorizer(sparse=<span class="literal">False</span>)</span><br><span class="line"><span class="comment"># 返回的是一个sparse矩阵（存储的就是特征值化的结果）</span></span><br><span class="line">feature = d.fit_transform(alist)</span><br><span class="line">print(d.get_feature_names())</span><br><span class="line">print(feature)</span><br><span class="line"><span class="comment"># 输出结果:1为是，0为不是</span></span><br><span class="line">[<span class="string">'city=BeiJing'</span>, <span class="string">'city=GZ'</span>, <span class="string">'city=SH'</span>, <span class="string">'temp'</span>]</span><br><span class="line">[[ <span class="number">1.</span>  <span class="number">0.</span>  <span class="number">0.</span> <span class="number">33.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">1.</span>  <span class="number">0.</span> <span class="number">42.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">1.</span> <span class="number">40.</span>]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>OneHot编码</strong></li>
+</ul>
+</li>
+<li><strong>sparse矩阵中的0和1就是OneHot编码</strong> </li>
+<li><strong>为什么需要OneHot编码呢？</strong><ul>
+<li><strong>特征抽取主要目的就是对非数值型的数据进行特征值化！</strong><br><img src="https://img-blog.csdnimg.cn/20210315212549673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="fig1"><br><img src="https://img-blog.csdnimg.cn/20210315213001403.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="fig2"><ul>
+<li><strong>基于pandas实现OneHot编码</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>pd.get_dummies(df[‘col’])</strong><br>In [7]：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame([[<span class="string">'green'</span>, <span class="string">'M'</span>, <span class="number">20</span>, <span class="string">'class1'</span>],</span><br><span class="line">                   [<span class="string">'red'</span>, <span class="string">'L'</span>, <span class="number">21</span>, <span class="string">'class2'</span>],</span><br><span class="line">                   [<span class="string">'blue'</span>, <span class="string">'XL'</span>, <span class="number">22</span>, <span class="string">'class3'</span>]])</span><br><span class="line">df.columns = [<span class="string">'color'</span>, <span class="string">'size'</span>, <span class="string">'weight'</span>, <span class="string">'class label'</span>]</span><br><span class="line">print(df)</span><br><span class="line">print(pd.get_dummies(df[<span class="string">'color'</span>]))</span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line">   color size  weight <span class="class"><span class="keyword">class</span> <span class="title">label</span></span></span><br><span class="line"><span class="class">0  <span class="title">green</span>    <span class="title">M</span>      20      <span class="title">class1</span></span></span><br><span class="line"><span class="class">1    <span class="title">red</span>    <span class="title">L</span>      21      <span class="title">class2</span></span></span><br><span class="line"><span class="class">2   <span class="title">blue</span>   <span class="title">XL</span>      22      <span class="title">class3</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">   <span class="title">blue</span>  <span class="title">green</span>  <span class="title">red</span></span></span><br><span class="line"><span class="class">0     0      1    0</span></span><br><span class="line"><span class="class">1     0      0    1</span></span><br><span class="line"><span class="class">2     1      0    0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>文本特征提取</strong></li>
+</ul>
+</li>
+<li><strong>作用：对文本数据进行特征值化</strong> </li>
+<li><strong>API：from sklearn.feature_extraction.text import CountVectorizer</strong></li>
+<li>-fit_transform(x):x为文本或者包含文本字符串的可迭代对象，返回sparse矩阵<br>  -inverse_transform(x):x为sparse矩阵或者array数组，返回值为转换之前的数据格式<br>  -toarray():将sparse转换成数组<br>  -get_feature_names():返回类别名称<br>In  [6]：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line">	vector=CountVectorizer()</span><br><span class="line">	res=vector.fit_transform([<span class="string">'lift is short,i love python'</span>,<span class="string">'lift is too long,i hate python'</span>])</span><br><span class="line">	print(res)</span><br><span class="line">	print(vector.get_feature_names())</span><br><span class="line">	print(res.toarray())<span class="comment">#将sparse矩阵转换成数组</span></span><br><span class="line">	<span class="comment"># 单字母不统计（因为单个字母代表不了实际含义），然后每个数字表示的是单词出现的次数</span></span><br><span class="line">	<span class="comment"># 输出结果：</span></span><br><span class="line">	(<span class="number">0</span>, <span class="number">2</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">1</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">6</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">4</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">5</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">2</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">1</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">5</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">7</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">3</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">0</span>)	<span class="number">1</span></span><br><span class="line">[<span class="string">'hate'</span>, <span class="string">'is'</span>, <span class="string">'lift'</span>, <span class="string">'long'</span>, <span class="string">'love'</span>, <span class="string">'python'</span>, <span class="string">'short'</span>, <span class="string">'too'</span>]</span><br><span class="line">[[<span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span>]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>中文文本特征提取</strong></li>
+</ul>
+</li>
+<li><strong>对有标点符号的中文文本进行特征提取</strong><br>In [15]:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line"></span><br><span class="line">vector = CountVectorizer()</span><br><span class="line">res = vector.fit_transform([<span class="string">'人生苦短，我用python'</span>, <span class="string">'人生漫长，不用python'</span>])</span><br><span class="line">print(res)</span><br><span class="line">print(vector.get_feature_names())</span><br><span class="line">print(res.toarray())</span><br><span class="line"><span class="comment">#输出结果：</span></span><br><span class="line"> (<span class="number">0</span>, <span class="number">2</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">3</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">1</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">0</span>)	<span class="number">1</span></span><br><span class="line">[<span class="string">'不用python'</span>, <span class="string">'人生漫长'</span>, <span class="string">'人生苦短'</span>, <span class="string">'我用python'</span>]</span><br><span class="line">[[<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span>]</span><br><span class="line"> [<span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>对有标点符号且有空格分隔的中文文本进行特征处理</strong><br>In[8]:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line"></span><br><span class="line">vector = CountVectorizer()</span><br><span class="line">res = vector.fit_transform([<span class="string">'人生 苦短，我 用python'</span>, <span class="string">'人生 漫长，不用python'</span>])</span><br><span class="line">print(res)</span><br><span class="line">print(vector.get_feature_names())</span><br><span class="line">print(res.toarray())</span><br><span class="line"><span class="comment"># 单个汉字不统计</span></span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"> (<span class="number">0</span>, <span class="number">1</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">4</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">3</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">1</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">2</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">0</span>)	<span class="number">1</span></span><br><span class="line">[<span class="string">'不用python'</span>, <span class="string">'人生'</span>, <span class="string">'漫长'</span>, <span class="string">'用python'</span>, <span class="string">'苦短'</span>]</span><br><span class="line">[[<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span>]</span><br><span class="line"> [<span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span>]]</span><br></pre></td></tr></table></figure></li>
+<li><strong>目前CountVectorizer只可以对标点符号和用分隔符对应的文本进行特征提取，显然这是满足不了我们日常需求的：</strong></li>
+</ul>
+</li>
+<li><strong>因为在自然语言处理中，我们是需要将一段中文文本中相关的词语，成语，形容词…..都需要提取的</strong> <ul>
+<li>*<em>jieba分词 *</em></li>
+</ul>
+</li>
+<li><strong>对中文文章进行分词处理</strong> </li>
+<li><strong>pip install jieba</strong></li>
+<li><strong>jieba分词的基本使用</strong></li>
+</ul>
+</li>
+</ul>
+<p>In[17]:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本使用：对文章进行分词</span></span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"></span><br><span class="line">jb = jieba.cut(<span class="string">"我是一个好人"</span>)</span><br><span class="line">content = list(jb)</span><br><span class="line">print(content)</span><br><span class="line">ct = <span class="string">' '</span>.join(content)</span><br><span class="line">print(ct)  <span class="comment"># 返回空格区分的词语</span></span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line">Building prefix dict <span class="keyword">from</span> the default dictionary ...</span><br><span class="line">Loading model <span class="keyword">from</span> cache C:\Users\<span class="number">21641</span>\AppData\Local\Temp\jieba.cache</span><br><span class="line">Loading model cost <span class="number">0.522</span> seconds.</span><br><span class="line">Prefix dict has been built successfully.</span><br><span class="line">[<span class="string">'我'</span>, <span class="string">'是'</span>, <span class="string">'一个'</span>, <span class="string">'好人'</span>]</span><br><span class="line">我 是 一个 好人</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>特征预处理</strong><ul>
+<li><strong>无量纲化：</strong><ul>
+<li><strong>在机器学习算法实践中，我们往往有着将不同规格的数据转换到同一规格，或不同分布的数据转换到某个特定分布的需求这种需求统称为将数据“无量纲化”，譬如梯度和矩阵为核心的算法中，逻辑回归,支持向量机，神经网络，使用无量纲化可以加快求解速度；而在距离类模型，譬如K近邻，K-Means聚类中，无量纲化可以帮我们提升模型精度，避免某一个取值范围特别大的特征对距离计算造成影响。（一个特例是决策树和树的集成算法们，对决策树不需要无量纲化，决策树可以把任意数据处理的很好。）</strong> </li>
+<li><strong>那么预处理就是用来实现无量纲化的方式</strong> </li>
+</ul>
+</li>
+<li><strong>含义：特征提取后我们就获取对应的数值型的样本数据，然后就可以进行数据处理了。</strong></li>
+<li><strong>概念：通过特定的统计方法（数学方法），将数据转换算法要求的数据</strong></li>
+<li><strong>方式：</strong><ul>
+<li><strong>归一化</strong></li>
+<li><strong>标准化</strong>  </li>
+<li><strong>如果认为每一个特征具有同等大小的权重都同等重要，则必须对其进行归一化处理。</strong></li>
+<li><strong>可以使用KNN算法对特征影响进行说明！！</strong></li>
+</ul>
+</li>
+<li><strong>归一化的实现</strong></li>
+<li><strong>特点：通过对原始数据进行变换把数据映射到（默认为[0,1]）之间</strong>  </li>
+<li><strong>公式：X’=$\frac{X-min}{max-min}$</strong></li>
+<li>$\ X”=X’ *  (mx-mi) + mi$  </li>
+<li><strong>注：作用于每一列，max为一列的最大值，min为一列的最小值，那么X”为最终结果，mx，mi分别为指定区间值默认mx为1，mi为0</strong></li>
+</ul>
+</li>
+<li><strong>归一化后的数据服从正态分布</strong></li>
+<li><strong>API:from sklearn.preprocessing import MinMaxScaler</strong><ul>
+<li><strong>参数：feature_range表示缩放范围，通常使用(0,1)</strong> </li>
+</ul>
+</li>
+<li><strong>作用：使得某一个特征对最终结果不会造成很大影响</strong> </li>
+</ul>
+<p>In[22]：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line"></span><br><span class="line">mm = MinMaxScaler(feature_range=(<span class="number">0</span>, <span class="number">1</span>))  <span class="comment"># 每个特征缩放的范围</span></span><br><span class="line">data = [[<span class="number">90</span>, <span class="number">2</span>, <span class="number">10</span>, <span class="number">40</span>], [<span class="number">60</span>, <span class="number">5</span>, <span class="number">15</span>, <span class="number">45</span>], [<span class="number">73</span>, <span class="number">3</span>, <span class="number">13</span>, <span class="number">45</span>]]  <span class="comment"># 三行四列</span></span><br><span class="line">data = mm.fit_transform(data)  <span class="comment"># x需要归一化的特征</span></span><br><span class="line">print(data)</span><br><span class="line"><span class="comment"># 通过一列进行归一化处理 90，60，73 max=90 min=60 </span></span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line">[[<span class="number">1.</span>         <span class="number">0.</span>         <span class="number">0.</span>         <span class="number">0.</span>        ]</span><br><span class="line"> [<span class="number">0.</span>         <span class="number">1.</span>         <span class="number">1.</span>         <span class="number">1.</span>        ]</span><br><span class="line"> [<span class="number">0.43333333</span> <span class="number">0.33333333</span> <span class="number">0.6</span>        <span class="number">1.</span>        ]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>问题：如果数据中存在的异常值较多，会对结果造成什么样的影响？</strong><ul>
+<li><strong>结合着归一化计算的公式可知，异常值对原始数据的最大值和最小值的影响很大，因此也会影响对归一化之后的值。这个也是归一化的一个弊端，无法很好的处理异常值。</strong> </li>
+</ul>
+</li>
+<li><strong>归一化总结：在特定场景下最大值和最小值是变化的，另外最大最小值很容易受到异常值的影响，所以这种归一化的方式具有一定的局限性。因此，引出了一种更好的方法叫做：“标准化”。</strong></li>
+<li><strong>标准化的处理</strong><ul>
+<li><strong>当数据均值中心化后，再按标准差缩放，数据就会服从均值为0，方差为1的正态分布（即标准正态分布），而这个过程，就叫做数据标准化（standardization,又称Z-score normalization）公式如下：</strong></li>
+<li><strong>公式：X’=$\frac{x-mean}{σ}$</strong></li>
+<li><strong>注：作用于每一列，mean为平均值，σ为标准差  var成为方差，var=$\frac{(x1-mean)^2+(x2-mean)^2+……}{n（每个特征的样本数）}$，$σ=\sqrt{var}$ 其中：方差（考量数据的稳定性）</strong><ul>
+<li><strong>从公式中可以看出，异常值对方差和标准差的影响不大</strong></li>
+</ul>
+</li>
+<li><strong>归一化和标准化总结</strong><ul>
+<li><strong>对于归一化来说，如果出现了异常值则会影响特征的最大最小值，那么最终结果会受到较大影响</strong> </li>
+<li><strong>对于标准化来说，如果出现异常点，由于具有一定的数据量，少量 的异常点对于平均值的影响并不大，从而标准差改变比较少</strong></li>
+</ul>
+</li>
+<li><strong>StandardScaler和MinMaxScaler选择哪个：看情况，大多数机器学习算法中，会选择StandardScaler来进行特征缩放，因为MinMaxScaler对异常值非常敏感。在PCA，聚类，逻辑回归，支持向量机，神经网络这些算法中，StandardScaler往往是最好的选择。MinMaxScaler在不涉及距离度量，梯度，协方差计算以及数据需要被压缩到特定区间时使用广泛，比如数字图像处理中量化像素强度时，都会使用MinMaxScaler将数据压缩与[0,1]区间之中</strong> </li>
+<li><strong>建议先看看StandardScaler，如果效果不好换MinMaxScaler</strong></li>
+<li><strong>API</strong><ul>
+<li><strong>处理后，每列所有的数据都聚集在均值为0，标准差为1范围附近</strong></li>
+<li><strong>标准化API：from sklearn.preprocessing import StandardScaler</strong></li>
+<li><strong>fit_transform(X):对X进行标准化</strong></li>
+<li><strong>mean_:均值</strong></li>
+<li><strong>var_:方差</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>In[23]:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">ss = StandardScaler()</span><br><span class="line">data = [[<span class="number">90</span>, <span class="number">2</span>, <span class="number">10</span>, <span class="number">40</span>], [<span class="number">60</span>, <span class="number">5</span>, <span class="number">15</span>, <span class="number">45</span>], [<span class="number">73</span>, <span class="number">3</span>, <span class="number">13</span>, <span class="number">45</span>]]</span><br><span class="line">data = ss.fit_transform(data)</span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>特征选择：从特征中选择出有意义的对模型有帮助的特征作为最终的机器学习输入的数据！</strong><ul>
+<li><strong>切记：</strong><ul>
+<li><strong>在做特征选择之前，有三件非常重要的事情：跟数据提供者联系，跟数据提供者沟通，跟数据提供者开会。</strong>  </li>
+<li><strong>一定要抓住给你提供数据的人，尤其是理解业务和数据含义的人，跟他们进行了解深入。技术能够让模型起飞，前提是你和业务人员一样了解数据。所以特征选择的第一步是根据我们的目标，用业务常识来选择特征。</strong></li>
+</ul>
+</li>
+<li><strong>特征选择的原因：</strong><ul>
+<li><strong>冗余：部分特征的相关度高，容易消耗计算机的性能</strong>  </li>
+<li><strong>噪点：部分特征对预测结果有偏执影响</strong></li>
+</ul>
+</li>
+<li><strong>特征选择的实现：</strong><ul>
+<li><strong>人为对不相关的特征进行主观舍弃</strong>  </li>
+<li><strong>当然了，在真正的数据应用领域，比如金融，医疗，电商，我们的数据特征特别多，很明显，那如果遇见极端情况，我们无法依赖对业务的理解来进行选择特征，该怎么办呢？</strong><ul>
+<li><strong>在已有特征和对应预测结果的基础上，使用相关的工具过滤掉一些无用的或者权重较低的特征</strong><ul>
+<li><strong>工具：</strong><ul>
+<li><strong>Filter（过滤式）</strong>   </li>
+<li><strong>Embedded(嵌入式):决策树模型会选择出对其重要的特征</strong></li>
+<li><strong>PCA降维</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Filter过滤式（方差过滤）：</strong><ul>
+<li><strong>原理：这是通过特征本身的方差来筛选特征的类。比如一个特征本身的方差很小，就表示样本在这个特征上基本上没有差异，可能特征中的大多数值都一样，甚至整个特征的取值都相同，那这个特征对于样本区分没有什么作用。所以无论接下来的特征工程要做什么，都要优先消除方差为0或者方差极低的特征。</strong></li>
+<li><strong>API：from sklearn.feature_selection import VarianceThreshold</strong>  </li>
+<li><strong>VarianceThreshold(threshold=x)threshold方差的值，删除所有方差低于x的特征，默认值为0表示保留所有方差非0的特征</strong></li>
+<li><strong>fit_transform(X):X为特征</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>In[10]:<br> <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> VarianceThreshold</span><br><span class="line"></span><br><span class="line"><span class="comment"># threshold方差的值，删除所有方差低于x的特征，默认值为0表示保留所有方差非0的特征</span></span><br><span class="line">v = VarianceThreshold(threshold=<span class="number">3</span>)</span><br><span class="line">v = v.fit_transform([[<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>], [<span class="number">0</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">3</span>], [<span class="number">0</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">3</span>]])</span><br><span class="line">print(v)</span><br><span class="line"><span class="comment">#输出结果：</span></span><br><span class="line">[[<span class="number">2</span>]</span><br><span class="line"> [<span class="number">3</span>]</span><br><span class="line"> [<span class="number">9</span>]]</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>如果将方差为0或者方差极低的特征去除后，剩余特征还有很多且模型的效果没有显著提升则方差也可以帮我们将特征选择【一步到位】。留下一半的特征，那可以设定一个让特征总数减半的方差阈值，只要找到特征方差的中位数，再将这个中位数作为参数threshold的值输入就好了。</strong><ul>
+<li><strong>VarianceThreshold(np.median(X.var().values)).fit_transform(X)</strong><ul>
+<li><strong>X为样本数据中的特征列</strong> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>In[28]:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> VarianceThreshold</span><br><span class="line"></span><br><span class="line">feature = np.random.randint(<span class="number">0</span>, <span class="number">100</span>, size=(<span class="number">5</span>, <span class="number">10</span>))</span><br><span class="line"><span class="comment"># print(feature)</span></span><br><span class="line">med = np.median(feature.var(axis=<span class="number">0</span>)) <span class="comment"># axis=0代表每一列 axis=1代表每一行</span></span><br><span class="line">v = VarianceThreshold(threshold=med)</span><br><span class="line">v = v.fit_transform(feature)</span><br><span class="line">print(v)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>方差过滤对模型的影响</strong> <ul>
+<li><strong>我们这样做了以后，对模型效果会有怎么样的影响？在这里，使用KNN算法方差过滤前和方差过滤后运行的效果和运行的时间进行对比。KNN是K近邻算法中的分类算法，其原理非常简单，是利用每个样本到其他样本点的距离来判断每个样本点的相似度，然后对样本进行分类。KNN必须遍历每个样本和每个特征，因而特征越多，KNN计算越缓慢</strong> </li>
+<li><strong>对于KNN，过滤后的效果十分明显，准确率稍有提升，平均运行时间减少了10分钟，特征选择后算法的效率提升了1/3</strong></li>
+<li><strong>注意：方差过滤主要服务的对象是：需要遍历特征的算法模型。而过滤法的主要目的是：在维持算法表现的前提下，帮助算法们降低成本。</strong></li>
+</ul>
+</li>
+<li><strong>PCA降维（主成分分析）：是一种分析，简化数据集的技术</strong> <ul>
+<li><strong>降维的维度值就是特征的种类</strong></li>
+<li><strong>思想：如何最好的对一个立体的物体用二维表示</strong><br><img src="https://img-blog.csdnimg.cn/20210408164017357.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+<li><strong>第四张图片可以比较好的标识一个立体三维的水壶。但是也要清楚，用一个低纬度去表示高纬度的物体时，一定会造成一些信息的差异。可以让低纬度也能正确表示高纬度的事务，或信息差异最小。</strong></li>
+<li><strong>目的：特征数量达到上百，上千的时候，考虑数据的优化。使数据维度压缩，尽可能降低源数据的维度（复杂度），损失少量信息</strong></li>
+<li><strong>作用：可以消减回归分析或者聚类分析中特征的数量</strong></li>
+</ul>
+<ul>
+<li><strong>PCA大致原理</strong><br><img src="https://img-blog.csdnimg.cn/20210408165112501.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>红色为原始的样本特征，为二维的特征，如果降为一维，则可以将5个红色的原始特征，映射一维的线段上就变成了4个特征。</strong></li>
+<li><strong>PCA语法：</strong><ul>
+<li><strong>from sklearn.decomposition import PCA</strong> </li>
+<li><strong>pca = PCA(n_components=none)</strong><ul>
+<li><strong>n_components可以为小数（保留特征的百分比），整数（减少到的特征数量）</strong></li>
+<li>** pca.fit_transform(X)**<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将数据分解为较低维度的空间</span></span><br><span class="line"><span class="comment"># n_components可以为小数（保留特征的百分比），整数（减少到的特征数量）</span></span><br><span class="line">pca = PCA(n_components=<span class="number">3</span>)</span><br><span class="line">pca = pca.fit_transform([[<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>], [<span class="number">0</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">3</span>], [<span class="number">0</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">3</span>]])</span><br><span class="line">print(pca)</span><br></pre></td></tr></table></figure>
+<h3 id="sklearn的数据集"><a href="#sklearn的数据集" class="headerlink" title="sklearn的数据集"></a><strong>sklearn的数据集</strong></h3></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>数据集划分</strong></li>
+<li><strong>数据集接口介绍</strong></li>
+<li><strong>数据集划分</strong><ul>
+<li><strong>前提：机器学习就是从数据中分析自动分析获得规律，并利用规律对未知数据进行预测。换句话说，我们的模型一定是要经过样本数据对其进行训练，才可以对未知数据进行预测</strong></li>
+<li><strong>问题：我们得到数据后，是否将数据全部用来训练模型呢？</strong><ul>
+<li><strong>不是，因为我们如果模型（数据的规律）都是从数据中得来的，那么模型的性能评估如何进行呢？还是基于对原先数据进行预测吗？当然不是，如果模型对原先数据进行预测，由于模型（数据的规律）本来就是从该数据中获取的，所以预测的精度几乎是百分之百。所以要评估模型的好坏，需要使用一组新数据对模型进行评估。</strong></li>
+<li><strong>因此我们需要把原来的样本数据拆分成两部分</strong><ul>
+<li><strong>训练集：训练模型</strong></li>
+<li><strong>测试集：评估模型</strong> <ul>
+<li><strong>不同类型的模型对应的评估方式是不一样的</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>数据集划分的API</strong>  <ul>
+<li><strong>from sklearn.model_selection import train_test_split</strong>  </li>
+<li><strong>train_test_split(x,y,test_size,random_state)参数介绍：</strong><ul>
+<li><strong>x:特征</strong></li>
+<li><strong>y:目标</strong></li>
+<li><strong>test_size:测试集的比例</strong></li>
+<li><strong>random_state:打乱的随机种子</strong></li>
+</ul>
+</li>
+<li><strong>返回值：训练特征，测试特征，训练目标，测试目标</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>数据集接口介绍</strong><ul>
+<li><strong>sklearn.datasets.load_*():获取小规模的数据集</strong></li>
+<li><strong>sklearn.datasets.fetch_*(data_home=None,subset):获取大规模的数据集，data_home表示数据集下载目录，None表示为默认值表示的是主目录/scikit_learn_data(自动创建该文件夹)下。需要从网络下载，subset为需要下载的数据集，可以为train，test，all</strong><br>In[30]<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sklearn.datasets <span class="keyword">as</span> datasets</span><br><span class="line"></span><br><span class="line"><span class="comment"># # 小规模数据集</span></span><br><span class="line"><span class="comment"># iris = datasets.load_iris()</span></span><br><span class="line"><span class="comment"># print(iris)</span></span><br><span class="line"><span class="comment"># # 样本数据抽取</span></span><br><span class="line"><span class="comment"># feature = iris['data']  # 特征数据</span></span><br><span class="line"><span class="comment"># target = iris['target']  # 标签数据</span></span><br><span class="line"><span class="comment"># print(feature.shape)</span></span><br><span class="line"><span class="comment"># print(target.shape)</span></span><br><span class="line"><span class="comment"># 大规模数据集</span></span><br><span class="line">news = datasets.fetch_20newsgroups(data_home=<span class="literal">None</span>, subset=<span class="string">'all'</span>)</span><br><span class="line">print(news)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><strong>鸢尾花数据集拆分</strong><br>In[31]<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sklearn.datasets <span class="keyword">as</span> datasets</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 小规模数据集</span></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line"><span class="comment"># print(iris)</span></span><br><span class="line"><span class="comment"># 样本数据抽取</span></span><br><span class="line">feature = iris[<span class="string">'data'</span>]  <span class="comment"># 特征数据</span></span><br><span class="line">target = iris[<span class="string">'target'</span>]  <span class="comment"># 标签数据</span></span><br><span class="line"><span class="comment"># # print(feature.shape)</span></span><br><span class="line"><span class="comment"># # print(target.shape)</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">2021</span>)</span><br><span class="line">print(x_test.shape)</span><br></pre></td></tr></table></figure>
+<h3 id="机器学习基础"><a href="#机器学习基础" class="headerlink" title="机器学习基础"></a>机器学习基础</h3></li>
+<li><strong>机器学习算法分类</strong></li>
+<li><strong>机器学习开发流程</strong></li>
+<li><strong>机器学习中的数据类型</strong><ul>
+<li><strong>离散型数据</strong><ul>
+<li><strong>离散变量则是通过计数方式获取的，即是要对统计的对象进行计数，增长量非固定的，如：一个地区的企业只有一家，而第二年开了十家；一个企业的职工只有10人，第二年一次招聘招来20人等</strong> </li>
+</ul>
+</li>
+<li><strong>连续型数据</strong><ul>
+<li><strong>连续变量是一直叠加上去的，增长量可以划分为规定的单位，即：1，2，3······，例如：一个人的身高，他首先长到1.51，然后才能到1.52，1.53 ······</strong>  </li>
+</ul>
+</li>
+<li><strong>注意：连续型是有规律的，离散型是无规律的</strong> </li>
+</ul>
+</li>
+<li><strong>机器学习算法分类</strong> <ul>
+<li><strong>分类和回归问题</strong><ul>
+<li><strong>分类算法基于的是[目标数据]为[离散型]数据</strong></li>
+<li><strong>回归算法基于的是[目标数据]为[连续型]数据</strong></li>
+<li><strong>结论：在社会中产生的数据必然是离散型数据或者连续型数据，那么企业针对数据的需求无非是分类或者回归问题</strong></li>
+</ul>
+</li>
+<li><strong>机器学习开发流程</strong><ul>
+<li><strong>1.数据采集</strong><ul>
+<li><strong>公司内部产生的数据</strong></li>
+<li><strong>与其他公式合作产生的数据</strong></li>
+<li><strong>购买的数据</strong>     </li>
+</ul>
+</li>
+<li><strong>2.分析数据所对应要解决的问题或者需求，根据目标数据推断是回归还是分类问题</strong></li>
+<li><strong>3.数据的基本处理</strong><ul>
+<li><strong>数据清洗</strong></li>
+<li><strong>合并</strong></li>
+<li><strong>级联等</strong> </li>
+</ul>
+</li>
+<li><strong>4.特征工程</strong><ul>
+<li><strong>特征抽取</strong></li>
+<li><strong>特征预处理</strong></li>
+<li><strong>降维等</strong> </li>
+</ul>
+</li>
+<li><strong>5.选择合适的模型，对其进行训练</strong></li>
+<li><strong>6.模型的评估</strong></li>
+<li><strong>7.上线使用</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>分类算法</strong><ul>
+<li><strong>KNN分类模型</strong><ul>
+<li><strong>概念：简单的说，K-近邻算法采用测量不同的特征值之间距离方法进行分类（K-Nearest Neighbor，KNN）</strong><br><img src="https://img-blog.csdnimg.cn/20210412143156469.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">  <img src="https://img-blog.csdnimg.cn/20210412144528119.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>欧几里得距离：欧式距离是常见的距离度量，衡量的多维空间中各个点的绝对距离。公式如下：</strong><ul>
+<li>$dist(X,Y)=\sqrt{\sum_{i=1}^n(x_i-y_i)^2}$</li>
+</ul>
+</li>
+<li><strong>案例：电影分类</strong></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20210412151432766.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210412151609594.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210412151648119.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><p><strong>在scitkit-learn库中使用KNN算法</strong></p>
+</li>
+<li><p><strong>分类问题：</strong></p>
+</li>
+<li><p><strong>鸢尾花分类实现</strong><br>In[25]:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sklearn.datasets <span class="keyword">as</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.捕获鸢尾花数据</span></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line"><span class="comment"># 2.提取样本数据</span></span><br><span class="line">feature = iris[<span class="string">'data'</span>]  <span class="comment"># 特征数据</span></span><br><span class="line">target = iris[<span class="string">'target'</span>]  <span class="comment"># 标签数据</span></span><br><span class="line"><span class="comment"># 3.数据集进行拆分</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">2021</span>)</span><br><span class="line"><span class="comment"># 4.观察数据集:看是否需要特征工程处理的需要</span></span><br><span class="line"><span class="comment"># print(x_train)</span></span><br><span class="line"><span class="comment"># 5.实例化模型对象</span></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">2</span>)  <span class="comment"># n_neighbors == k</span></span><br><span class="line"><span class="comment"># 在KNN中k的取值不同会直接导致分类结果的不同。n_neighbors参数表示k值。k值可以叫做模型的超参数</span></span><br><span class="line"><span class="comment"># 模型的超参数:如果模型参数有不同的取值且不同的取值会对模型的分类或者预测产生直接的影响</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 6.使用训练集训练模型</span></span><br><span class="line"><span class="comment"># X:训练集的特征数据，特征数据必须是二维的</span></span><br><span class="line"><span class="comment"># y：训练集的标签数据</span></span><br><span class="line">knn = knn.fit(x_train, y_train)</span><br><span class="line">print(x_train.shape)</span><br><span class="line"><span class="comment"># print(knn)</span></span><br><span class="line"><span class="comment"># 7.测试模型:使用测试数据</span></span><br><span class="line"><span class="comment"># predict表示使用训练好的模型实现分类或者预测</span></span><br><span class="line">y_pred = knn.predict(x_test)  <span class="comment"># 模型基于测试数据返回的分类结果</span></span><br><span class="line">y_true = y_test  <span class="comment"># 测试集真实的分类结果</span></span><br><span class="line">print(<span class="string">"模型的分类结果："</span>, y_pred)</span><br><span class="line">print(<span class="string">'真实的分类结果：'</span>, y_true)</span><br><span class="line">score = knn.score(x_test, y_test)</span><br><span class="line">print(score)</span><br><span class="line">print(x_test[<span class="number">0</span>])</span><br><span class="line">n = knn.predict([[<span class="number">4.5</span>, <span class="number">3.3</span>, <span class="number">1.4</span>, <span class="number">0.3</span>]])  <span class="comment"># 未知数据进行了分类</span></span><br><span class="line">print(n)</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>预测年收入是否大于500k美元</strong><br>In[36]:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载数据</span></span><br><span class="line">df = pd.read_csv(<span class="string">'adult.data'</span>)</span><br><span class="line"><span class="comment"># print(df)</span></span><br><span class="line"><span class="comment"># 样本数据的提取</span></span><br><span class="line">target = df[<span class="string">'salary'</span>]</span><br><span class="line">feature = df[[<span class="string">'age'</span>, <span class="string">'education_num'</span>, <span class="string">'occupation'</span>, <span class="string">'hours_peer_week'</span>]]</span><br><span class="line"><span class="comment"># print(feature.shape)</span></span><br><span class="line"><span class="comment"># print(target.shape)</span></span><br><span class="line"><span class="comment"># 数据集拆分</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature, target, test_size=<span class="number">0.1</span>, random_state=<span class="number">2021</span>)</span><br><span class="line"><span class="comment"># 观察特征数据看是否需要进行特征工程</span></span><br><span class="line"><span class="comment"># print(x_train)</span></span><br><span class="line">occ_one_hot = pd.get_dummies(x_train[<span class="string">'occupation'</span>])</span><br><span class="line"><span class="comment"># print(occ_one_hot)</span></span><br><span class="line">x_train = pd.concat((x_train, occ_one_hot), axis=<span class="number">1</span>).drop(labels=<span class="string">'occupation'</span>, axis=<span class="number">1</span>)</span><br><span class="line"><span class="comment"># print(x_train)</span></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">49</span>).fit(x_train, y_train)</span><br><span class="line"><span class="comment"># 对测试集的特征进行one-hot编码</span></span><br><span class="line">occ_one_hot_test = pd.get_dummies(x_test[<span class="string">'occupation'</span>])</span><br><span class="line">x_test = pd.concat((x_test, occ_one_hot_test), axis=<span class="number">1</span>).drop(labels=<span class="string">'occupation'</span>, axis=<span class="number">1</span>)</span><br><span class="line">print(knn.score(x_test, y_test))</span><br><span class="line">scores = []</span><br><span class="line">ks = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>, <span class="number">50</span>):</span><br><span class="line">    knn = KNeighborsClassifier(n_neighbors=i)</span><br><span class="line">    knn.fit(x_train, y_train)</span><br><span class="line">    score = knn.score(x_test, y_test)</span><br><span class="line">    scores.append(score)</span><br><span class="line">    ks.append(i)</span><br><span class="line">score_arr = np.array(scores)</span><br><span class="line">ks_arr = np.array(ks)</span><br><span class="line"><span class="comment"># %matplotlib inline</span></span><br><span class="line"></span><br><span class="line">plt.plot(ks_arr, score_arr)</span><br><span class="line">plt.xlabel(<span class="string">'k_value'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'score'</span>)</span><br><span class="line">plt.show()</span><br><span class="line">print(score_arr.max())</span><br><span class="line"><span class="comment"># 最大值的下标</span></span><br><span class="line">print(score_arr.argmax())</span><br><span class="line"><span class="comment"># 最优k值</span></span><br><span class="line">print(ks_arr[score_arr.argmax()])</span><br></pre></td></tr></table></figure>
+<p>输出图像<br><img src="https://img-blog.csdnimg.cn/20210412223843822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p><strong>学习曲线寻找最优的k值</strong></p>
+</li>
+<li><p><strong>约会网站配对效果判定</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">'datingTestSet2.txt'</span>, header=<span class="literal">None</span>, sep=<span class="string">'\s+'</span>)</span><br><span class="line"><span class="comment"># print(df)</span></span><br><span class="line">feature = df[[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]]</span><br><span class="line">target = df[<span class="number">3</span>]</span><br><span class="line"><span class="comment"># print(feature)</span></span><br><span class="line"><span class="comment"># print(target)</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">2021</span>)</span><br><span class="line"><span class="comment"># print(x_train)  # 观察特征数据查看是否需要进行特征工程</span></span><br><span class="line"><span class="comment"># 对训练集特征数据进行预处理</span></span><br><span class="line">mm = MinMaxScaler()</span><br><span class="line">m_x_train = mm.fit_transform(x_train)  <span class="comment"># 训练集的特征数据进行归一化操作</span></span><br><span class="line"><span class="comment"># 对测试集的数据进行归一化处理</span></span><br><span class="line">m_x_test = mm.transform(x_test)</span><br><span class="line"><span class="comment"># 绘制学习曲线寻最优k值</span></span><br><span class="line">scores = []</span><br><span class="line">ks = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>, <span class="number">50</span>):</span><br><span class="line">    knn = KNeighborsClassifier(n_neighbors=i)</span><br><span class="line">    knn.fit(m_x_train, y_train)</span><br><span class="line">    score = knn.score(m_x_test, y_test)</span><br><span class="line">    scores.append(score)</span><br><span class="line">    ks.append(i)</span><br><span class="line">score_arr = np.array(scores)</span><br><span class="line">ks_arr = np.array(ks)</span><br><span class="line">plt.plot(ks_arr, score_arr)</span><br><span class="line">plt.xlabel(<span class="string">'k_value'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'score'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 最大值</span></span><br><span class="line">print(score_arr.max())</span><br><span class="line"><span class="comment"># 最大值的下标</span></span><br><span class="line">print(score_arr.argmax())</span><br><span class="line"><span class="comment"># 最优k值</span></span><br><span class="line">print(ks_arr[score_arr.argmax()])</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">7</span>).fit(m_x_train, y_train)</span><br><span class="line">print(knn.score(m_x_test, y_test))</span><br><span class="line">print(knn.predict([[<span class="number">2345</span>, <span class="number">20</span>, <span class="number">1.1</span>]]))</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>问题：约会数据中发现目标数据为非数值型数据，可行吗？</strong></p>
+<ul>
+<li><strong>可行，因为在KNN算法原理中，仅仅是计算特征值之间距离，目标数据没有参与运算</strong> <h3 id="K折交叉验证"><a href="#K折交叉验证" class="headerlink" title="K折交叉验证"></a>K折交叉验证</h3></li>
+</ul>
+</li>
+<li><p><strong>目的：选出最为合适的模型超参数的取值，然后将超参数的值作用到模型的创建中</strong></p>
+</li>
+<li><p><strong>思想：将样本的训练数据交叉的拆分出不同的训练集和验证集，使用交叉拆分出不同的训练集和验证集，分别测试模型的精准度，然后求出模型精准度的均值就是此次交叉验证的结果。将交叉验证作用到不同的超参数中，选出精准度最高的超参数作为模型创建的超参数即可</strong></p>
+</li>
+<li><p><strong>实现思路：</strong></p>
+<ul>
+<li><strong>将数据集平均划分成k个等份</strong></li>
+<li><strong>使用1份数据作为测试数据，其余作为训练数据</strong></li>
+<li><strong>计算测试准确率</strong></li>
+<li><strong>使用不同的测试集，重复2，3步骤</strong></li>
+<li><strong>对准确率做平均，作为对未知数据预测准确率的估计</strong></li>
+<li><strong>API</strong><ul>
+<li><strong>from sklearn.model_selection import cross_val_score</strong> </li>
+<li><strong>cross_val_score(estimator,X,y,cv)</strong><ul>
+<li><strong>estimator:模型对象</strong></li>
+<li><strong>X,y:训练集数据</strong></li>
+<li><strong>cv:折数</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>交叉验证在knn中的使用</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets <span class="keyword">as</span> datasets</span><br><span class="line"></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">12</span>)</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">feature = iris[<span class="string">'data'</span>]</span><br><span class="line">target = iris[<span class="string">'target'</span>]</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">2021</span>)</span><br><span class="line">cross_val_score(knn, x_train, y_train, cv=<span class="number">5</span>).mean()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用交叉验证和学习曲线寻找最优超参数</span></span><br><span class="line"></span><br><span class="line">scores = []</span><br><span class="line">ks = []</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">3</span>, <span class="number">20</span>):</span><br><span class="line">     knn = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line">     score = cross_val_score(knn, x_train, y_train, cv=<span class="number">6</span>).mean()</span><br><span class="line">     scores.append(score)</span><br><span class="line">     ks.append(k)</span><br><span class="line">plt.plot(ks, scores)</span><br><span class="line">plt.xlabel(<span class="string">'k_value'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'score'</span>)</span><br><span class="line">plt.show()</span><br><span class="line">ks_arr = np.array(ks)</span><br><span class="line">score_arr = np.array(scores)</span><br><span class="line">print(score_arr.max())</span><br><span class="line">print(score_arr.argmax())</span><br><span class="line">print(ks_arr[score_arr.argmax()])</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>交叉验证也可以帮我们进行模型选择，以下是一组例子，分别使用KNN，logistic回归模型进行模型的选择和比较</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets <span class="keyword">as</span> datasets</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">feature = iris[<span class="string">'data'</span>]</span><br><span class="line">target = iris[<span class="string">'target'</span>]</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">2021</span>)</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">12</span>)</span><br><span class="line">print(cross_val_score(knn, x_train, y_train, cv=<span class="number">5</span>).mean())</span><br><span class="line">lr = LogisticRegression()</span><br><span class="line">print(cross_val_score(lr, x_train, y_train, cv=<span class="number">5</span>).mean())</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>K-Fold&amp;cross_val_score</strong></p>
+<ul>
+<li><strong>Scikit提供了K-Fold的API</strong><ul>
+<li><strong>n-split就是折数</strong></li>
+<li><strong>shuffle就是对数据是否进行洗牌</strong></li>
+<li><strong>random_state就是随机种子，固定随机性</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> array</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"></span><br><span class="line">data = array([<span class="number">0.1</span>, <span class="number">0.2</span>, <span class="number">0.3</span>, <span class="number">0.4</span>, <span class="number">0.5</span>, <span class="number">0.6</span>])</span><br><span class="line">kFold = KFold(n_splits=<span class="number">3</span>, shuffle=<span class="literal">True</span>, random_state=<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> train, test <span class="keyword">in</span> kFold.split(data):</span><br><span class="line">    print(<span class="string">'train:%s,test:%s'</span> % (data[train], data[test]))</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Scitkit中提取K-Fold接口的交叉验证接口sklearn.model_selection.cross_validate,但是该接口没有shuffle功能，所以结合K-Fold一起使用。如果train数据在分组前已经经过shuffle处理，比如使用train_test_split分组，那么可以直接使用cross_val_score接口</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets <span class="keyword">as</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X, y = iris.data, iris.target</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">12</span>)</span><br><span class="line">n_folds = <span class="number">5</span></span><br><span class="line">kFold = KFold(n_folds, shuffle=<span class="literal">True</span>, random_state=<span class="number">42</span>).get_n_splits(X)</span><br><span class="line">score = cross_val_score(knn, X, y, cv=kFold)</span><br><span class="line">print(score.mean())</span><br></pre></td></tr></table></figure>
+<h3 id="线性回归-回归算法的评价指标"><a href="#线性回归-回归算法的评价指标" class="headerlink" title="线性回归+回归算法的评价指标"></a>线性回归+回归算法的评价指标</h3></li>
+<li><p><strong>回归问题的判定</strong></p>
+<ul>
+<li><strong>目标值是连续型的值，而分类问题的目标值是离散型的值</strong></li>
+</ul>
+</li>
+<li><p><strong>回归处理的问题为预测</strong></p>
+<ul>
+<li><strong>预测房价</strong></li>
+<li><strong>销售额的预测</strong></li>
+<li><strong>设定贷款额度</strong></li>
+<li><strong>总结：上述案例，可以根据事物的相关特征预测出对应的结果值</strong></li>
+</ul>
+</li>
+<li><p><strong>线性回归在生活中的映射：生活案例[预测学生的期末成绩]：</strong></p>
+<ul>
+<li><strong>期末成绩的制定：0.7<em>考试成绩+0.3</em>平时成绩，特征值为考试成绩和平时成绩，目标值为总成绩。从此案例中可以感受到</strong><ul>
+<li><strong>回归算法预测出来的结果就是经过相关算法计算出来的结果值</strong></li>
+<li><strong>每个特征需要一个权重的占比，这个权重的占比确定后，则可以得到最终的计算结果，也就是获取了最终预测结果</strong>    <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> DataFrame</span><br><span class="line"><span class="keyword">import</span> matplotlib.pylab <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> mpl</span><br><span class="line"></span><br><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">'面积'</span>: [<span class="number">55</span>, <span class="number">76</span>, <span class="number">80</span>, <span class="number">100</span>, <span class="number">120</span>, <span class="number">150</span>],</span><br><span class="line">    <span class="string">'售价'</span>: [<span class="number">110</span>, <span class="number">152</span>, <span class="number">160</span>, <span class="number">200</span>, <span class="number">240</span>, <span class="number">300</span>]</span><br><span class="line">&#125;</span><br><span class="line">df = DataFrame(data=dic)</span><br><span class="line">print(df)</span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'FangSong'</span>]  <span class="comment"># 指定默认字体</span></span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="literal">False</span>  <span class="comment"># 解决保存图像是负号‘-’显示为方块的问题</span></span><br><span class="line">plt.scatter(df[<span class="string">'面积'</span>], df[<span class="string">'售价'</span>])</span><br><span class="line">plt.xlabel(<span class="string">'面积'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'售价'</span>)</span><br><span class="line">plt.title(<span class="string">'面积和价钱的分布图'</span>)</span><br><span class="line">plt.scatter(np.linspace(<span class="number">0</span>, <span class="number">180</span>, num=<span class="number">100</span>), np.linspace(<span class="number">0</span>, <span class="number">180</span>, num=<span class="number">100</span>)*<span class="number">2</span>, alpha=<span class="number">0.3</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>思考：上述的线性方程y=wx+b其中x为特征y为目标，这种方程作为线性关系模型的预测数据的话是否可以满足所有的预测场景呢？</strong></p>
+<ul>
+<li><strong>如果现在房价受影响的不光是面积了，加入了采光率和楼层，那意味着特征变成了三种。在原始的线性方程y=wx+b中只可以有一个特征，则该方程不具有通用性。</strong></li>
+<li><strong>标准线性关系模型为：</strong><ul>
+<li><strong>售价=（w1面积+w2采光率+w3楼层）+b==》 y=(w1<em>x1+w2</em>x2+···+wn*xn)+b</strong><ul>
+<li><strong>w又叫做权重。</strong></li>
+<li><strong>b可以变换成w0*x0,x0=1</strong><ul>
+<li><strong>y=w0<em>x0+w1x1+w2x2+···+wn</em>xn</strong></li>
+</ul>
+</li>
+<li><strong>权重向量（行向量）：w0,w1,w2···wn</strong><ul>
+<li><strong>行向量的转置就是列向量。行向量是一个n*1的矩阵，即矩阵由一个含n个元素的行所组成</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>线性回归：</strong></p>
+<ul>
+<li><strong>找出特征和特征权重之间的一种组合，从而来预测对应的结果！！！</strong><ul>
+<li><strong>线性方程式：</strong><ul>
+<li><strong>y=w1<em>x1+w2</em>x2+···+wn*xn+b</strong>     </li>
+<li><strong>为了方便后续写出矩阵的形式，我们这边可以稍作修改，令w0=b,x0=1,就可以写出下边的形式：</strong></li>
+<li><strong>y=w0<em>x0+w1</em>x1+w2<em>x2+···+wn</em>xn</strong></li>
+<li><strong>假设现在有m个样本，写出矩阵的形式就是：</strong></li>
+<li>$X=\left[       \begin{array}{lcr}     1&amp; x_1^1 &amp; x_1^2&amp;···&amp;x_1^n \          1&amp; x_2^1 &amp; x_2^2&amp;···&amp;x_2^n  \···&amp; ··· &amp; ···&amp;···&amp;···\1&amp; x_m^1 &amp; x_m^2&amp;···&amp;x_m^n\end{array}    \right]$  $Y=\left[       \begin{array}{lcr}     y_1\y_2\y_3\···\y_m \end{array}    \right]$</li>
+<li><strong>权重w也可以写成矩阵的形式：</strong><ul>
+<li>$W=\left[  \begin{array}{lcr}   w_0&amp;w_1&amp;w_2&amp;···&amp;w_n\end{array} \right]$</li>
+<li><strong>那么可以写成一种简单明了的方式：</strong><ul>
+<li><strong>$Y=XW^T$</strong></li>
+<li>PS:n代表特征数目，m代表样本数目 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>问题：真实结果和预测结果是否存在误差？</strong></p>
+<ul>
+<li><strong>如果房价预测案例中，特征与目标之间的分布规律不是线性的，那么还可以使用一条直线表示特征与目标之间的趋势呢？</strong><ul>
+<li><strong>可以，只要保证直线距离所有的散点距离最近，则该直线还是可以在一定程度上表示非线性分布散点之间的分布规律，但是该规律存在误差</strong>  </li>
+</ul>
+</li>
+<li><strong>误差存在，那么我们应该如何处理误差呢？在处理误差之前，我们必须先要知道一个回归算法的特性</strong><ul>
+<li><strong>回归算法是一个迭代算法。</strong><ul>
+<li><strong>当开始训练线性回归模型的时候，是逐步将样本数据带入模型对其进行训练的</strong></li>
+<li><strong>训练开始前先用部分样本数据训练模型生成一组w和b，对应的直线和数据对应散点的误差较大，通过不断的带入样本数据会逐步迭代更好的w和b从而使w和b的值更加的精准</strong></li>
+<li><strong>如何不断迭代的减少误差呢？</strong><ul>
+<li><strong>通过损失函数来表示误差</strong><ul>
+<li><strong>总损失定义：</strong><ul>
+<li>$J(θ)=(h_w(x_1)-y_1)^2+(h_w(x_2)-y_2)^2+···+(h_w(x_m)-y_m)^2=\sum_{i=1}^m(h_w(x_i)-y_i)^2$      </li>
+<li><strong>$y_i$:第i个训练样本的真实值</strong></li>
+<li><strong>$h_w(x_i)$:预测值</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>损失函数也可以表示为：</strong> <ul>
+<li>$\sum\limits_{i=1}^m(y_i-\hat{y_i})^2=\sum\limits_{i=1}^m(y_i-x_iw^T)^2$ </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>因此得知误差的大小线性回归方程中的系数w是有直接的关系</strong><ul>
+<li><strong>w(权重)的不同会导致误差大小的不同</strong></li>
+<li><strong>那么最终的问题就转换成了，【如何去求解方程中的w使得误差最小】</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>L2范式</strong> </p>
+<ul>
+<li><strong>这个损失函数代表了向量yi-y^i的L2范式的平方结果，L2范式的本质就是欧氏距离，即是两个向量上的每个点对应相减后的平方和再开平方，我们现在只实现向量上每个点对应相减后的平方和，并没有开方，所以我们的损失函数是L2范式，即欧氏距离的平方结果。</strong></li>
+<li>$dist=\sqrt{\sum\limits_{i=1}^n}(x_i-y_i)^2$     =     $min_w||y-xw^T||_2$</li>
+<li><strong>在这个平方结果下，我们的y和y^分别是我们的真实值和预测值，也就是说，这个损失函数实际计算我们的真实标签和预测值之间的距离。因此，我们认为这个损失函数衡量了我们构造的模型的预测结果和真实标签的差异，因此我们固然希望我们的预测结果和真实值差异越小越好，所以我们的求解目标就可以转换为：</strong></li>
+<li>$min_w||y-xw^T||_2  {^2}$</li>
+<li><strong>SSE&amp;RSS:</strong><ul>
+<li><strong>其中右下角的2表示向量y-xw的L2范式，也就是我们损失函数所代表的意义。在L2范式上开平方就是我们的损失函数。我们往往称呼这个式子为SSE（Sun of Sqaured Error，误差平方和）或者RSS(Residual Sum of Squares，残差平方和)</strong></li>
+</ul>
+</li>
+<li><strong>最小二乘法</strong><ul>
+<li><strong>现在问题转换成了求解让RSS的最小化参数向量w，这种通过最小化真实值和预测值之间的RSS来求解参数的方法叫做最小二乘法</strong></li>
+<li><strong>求解极值（最小值）的第一步求导一阶导数并让一阶导数等于0</strong>  </li>
+<li><strong>首先w表示的是一个列向量（矩阵），我们现在对列向量求导</strong></li>
+<li><strong>首先将L2范式拆开：</strong></li>
+<li>$\frac{\partial RSS}{\partial w}=\frac{\partial||y-xw||_2  {^2}}{\partial w}=\frac{\partial(y-xw)^T(y-xw)}{\partial w}$</li>
+<li><strong>两个向量（y&amp;xw）的平方就等于两个向量的转置乘以两个向量本身</strong></li>
+<li><strong>处理转置乘法和除法：</strong></li>
+<li><strong>$(A-B)^T=A^T-B^T并且(AB)^T=B^T*A^T$</strong></li>
+<li>$=\frac{\partial(y^T-w^Tx^T)(y-xw)}{\partial w}$</li>
+<li><strong>然后将上面的分子进行多项式相乘</strong></li>
+<li>$=\frac{\partial (y^Ty-w^Tx^Ty-y^Txw+w^Tx^Txw)}{\partial w}=<br>\frac{\partial y^Ty-\partial w^Tx^Ty-\partial y^Txw+\partial w^Tx^Txw}{\partial w}$</li>
+<li><strong>在矩阵求导中如果小a为常数项，A为矩阵则：</strong></li>
+<li>$\frac{\partial a}{\partial A}=0 , \frac{\partial A^TB^TC}{\partial A}=B^TC,\frac{\partial C^TBA}{\partial A}=B^TC,\frac{\partial A^TBA}{\partial A}=(B+B^T)A$</li>
+<li><strong>分子上的每一项对w进行求导的结果是：</strong></li>
+<li>$=0-x^Ty-x^Ty+2x^Txw=x^Txw-x^Ty$</li>
+<li><strong>至此我们就求解出对w求导的一阶导数，接下来让一阶导数，接下来让一阶导数为0则就求出了最小误差下的w的值了。</strong></li>
+<li>$x^Txw-x^Ty=0$        </li>
+<li>$x^Txw=x^Ty$</li>
+<li><strong>左乘一个$(x^Tx)^{-1}$则有：</strong></li>
+<li>$w=(x^Tx)^{-1}x^Ty$</li>
+<li><strong>$A^{-1}*A=1$</strong></li>
+</ul>
+</li>
+<li><strong>API</strong><ul>
+<li><strong>最小二乘（正规方程）：from sklearn.linear_model import LinearRegression</strong>  </li>
+<li><strong>fit_intercept:布尔值，可不填，默认为True,是否计算模型的截距。如果设置为False，则不会计算截距。</strong></li>
+<li><strong>normalize:布尔值，可不填，默认为False，当fit_intercept为False，此参数可忽略。如果为True，则特征矩阵X进入回归之前将会被减去均值（中心化）并除以L2范式（缩放）。如果你希望进行标准化，请在fit数据之前使用preprocessing模块中的标准化专用类StandardScaler</strong></li>
+<li><strong>copy_X:布尔值，可不填，默认为True。如果为真，将在X.copy()上进行操作否则的话，原本的特征矩阵X可能被线性回归影响并覆盖</strong></li>
+<li><strong>n_jobs:整数或者None，可不填，默认为None。用于计算的作业数。只在多标签的回归和数据量足够大的时候才生效。除非None在joblib.parallel_backend上下文，否则None统一表示为1。如果输入-1，则表示使用全部的cpu来进行计算</strong></li>
+<li><strong>这些参数并没有一个是必填的，更没有对我们的模型有不可替代的参数，这说明，线性回归的性能，往往取决于数据本身，而并非是我们的调参能力，线性回归也因此对数据有着很高的要求。幸运的是，大部分连续型变量之间，存在着或多或少的线性联系。所以线性回归固然简单，却很强大。sklearn的线性回归可以处理多标签问题，只需在fit的时候输入多维度标签就可以了。</strong></li>
+<li><strong>normalize参数:如果为True，则会对特征数据进行归一化处理，如果想对特征数据进行标准化处理，则需要训练模型前调用相关工具类对其进行标准化处理。</strong></li>
+<li><strong>使用最小二乘法对房屋进行预测</strong></li>
+<li><strong>特征介绍：</strong><ul>
+<li>AveBedrms:该街区平均的卧室数目</li>
+<li>Population:街区人口</li>
+<li>AveOccup:平均入住率</li>
+<li>Latitude:街区的纬度</li>
+<li>Longitude:街区的经度</li>
+<li>MedInc:街区住户收入的中位数</li>
+<li>HouseAge：房屋使用年数中位数</li>
+<li>AveRooms：街区平均房屋的数量<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> fetch_california_housing <span class="keyword">as</span> fch</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(fch())</span></span><br><span class="line">feature = fch().data</span><br><span class="line">target = fch().target</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature, target, test_size=<span class="number">0.1</span>, random_state=<span class="number">2021</span>)</span><br><span class="line">liner = LinearRegression()</span><br><span class="line">liner.fit(x_train, y_train)</span><br><span class="line">liner.coef_  <span class="comment"># 返回的是w系数</span></span><br><span class="line"><span class="comment"># print(liner.coef_)</span></span><br><span class="line">liner.intercept_  <span class="comment"># 返回的是截距</span></span><br><span class="line"><span class="comment"># print(liner.intercept_)</span></span><br><span class="line"><span class="comment"># 将系数和特征名称结合在一起查看</span></span><br><span class="line">[*zip(fch().feature_names, liner.coef_)]</span><br></pre></td></tr></table></figure>
+<h3 id="回归模型的评价指标"><a href="#回归模型的评价指标" class="headerlink" title="回归模型的评价指标"></a>回归模型的评价指标</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>回归类算法的模型评估一直都是回归算法中的一个难点，回归类与分类型算法的模型评估其实是相似的法则- -找真实标签和预测值的差异。只不过在分类型算法，这个差异只有一种角度来评判，那就是是否预测到了正确的分类，而在我们的回归类算法，我们有两种不同的角度来看待回归的效果：</strong></p>
+<ul>
+<li><strong>第一：我们是否预测到了正确或者接近正确的数值（因为误差的存在）</strong> </li>
+<li><strong>第二：我们是否拟合到了足够的信息。（是否模型预测的结果线性和样本真实的结果的线性更加吻合）</strong></li>
+<li><strong>这两种角度，分别对应着不同的模型评估指标</strong></li>
+</ul>
+</li>
+<li><p><strong>是否预测到了正确的数值</strong></p>
+<ul>
+<li><strong>回忆下我们的残差平方和RSS，它的本质是我们的预测值和真实值之间的差异，也就是从一种角度来评估我们回归的效力，所以RSS既是我们的损失函数，也是我们回归类模型的模型评估指标之一。但是，RSS有着致命的缺点: 它是一个无界的和，可以无限地大或者无限的小。我们只知道，我们想要求解最小的RSS，从RSS的公式来看，它不能为负，所以 RSS越接近0越好，但我们没有一个概念，究竟多小才算好，多接近0才算好?为了应对这种状况，sklearn中使用RSS 的变体，均方误差MSE(mean squared error)来衡量我们的预测值和真实值的差异:</strong>  </li>
+<li>$MSE=\frac{1}{m}\sum\limits_{i=1}^m (y_i-\hat{y_i})^2$</li>
+<li><strong>均方误差，本质是在RSS的基础上除以了样本总量，得到了每个样本量上的平均误差。有了平均误差，我们就可以将平均误差和我们的标签的取值范围（最大值和最小值）在一起比较，以此获得一个较为可靠的评估依据。（查看这个错误有多严重）</strong><ul>
+<li><strong>因为标签的最大值和最小值可以表示标签的一个分部情况，那么将其最大值和最小值和平均误差比较就可以大概看出在每个样本上的误差或者错误有多严重。</strong></li>
+<li><strong>在sklearn当中，我们有两种方式调用这个评估指标:</strong><ul>
+<li><strong>一种是使用sklearn专用的模型评估模块metrics里的类mean_squared_error</strong>  </li>
+<li><strong>另一种是调用交叉验证的类cross_val_score并使用里面的scoring参数来设置为：neg_mean_squared_error使用均方误差。</strong></li>
+<li><strong>交叉验证求得的均方误差为负值</strong><ul>
+<li><strong>均方误差的计算公式中求得的均方误差的值不可能为负。但是sklearn中的参数scoring下，均方误差作为评判 标准时，却是计算负均方误差(neg_mean_squared_error)。这是因为sklearn在计算模型评估指标的时候，会考虑指标本身的性质，均方误差本身是一种误差，所以被sklearn划分为模型的一种损失(loss)。在sklearn当中，所有的损失都使用负数表示，因此均方误差也被显示为负数了。真正的均方误差MSE的数值，其实就是neg_mean_squared_error去掉负号的数字。</strong> <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> fetch_california_housing <span class="keyword">as</span> fch</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(fch())</span></span><br><span class="line">feature = fch().data</span><br><span class="line">target = fch().target</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature, target, test_size=<span class="number">0.1</span>, random_state=<span class="number">2021</span>)</span><br><span class="line">liner = LinearRegression()</span><br><span class="line">liner.fit(x_train, y_train)</span><br><span class="line">liner.coef_  <span class="comment"># 返回的是w系数</span></span><br><span class="line"><span class="comment"># print(liner.coef_)</span></span><br><span class="line">liner.intercept_  <span class="comment"># 返回的是截距</span></span><br><span class="line"><span class="comment"># print(liner.intercept_)</span></span><br><span class="line"><span class="comment"># 将系数和特征名称结合在一起查看</span></span><br><span class="line">[*zip(fch().feature_names, liner.coef_)]</span><br><span class="line"><span class="comment"># print(liner.score(x_test, y_test))</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"></span><br><span class="line">y_true = y_test</span><br><span class="line">y_pred = liner.predict(x_test)</span><br><span class="line">mean_squared_error(y_true, y_pred)</span><br><span class="line"><span class="comment"># print(y_true.max())</span></span><br><span class="line"><span class="comment"># print(y_true.min())</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"></span><br><span class="line">print(cross_val_score(liner, x_train, y_train, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>).mean())</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>绝对误差</strong></p>
+<ul>
+<li><strong>除了MSE，我们还有与MSE类似的MAE(Mean absolute error，绝对均值误差):</strong></li>
+<li>$MAE=\frac{1}{m}\sum\limits_{i=0}^{m-1}|y_i-\hat{y_i}|$ </li>
+<li><strong>其表达的概念与均方误差完全一致，不过在真实标签和预测值之间的差异我们使用的是L1范式（绝对值）。现实使用中，MSE和MAE选一个使用就可以了</strong></li>
+<li><strong>在sklearn当中，我们使用命令</strong><ul>
+<li><strong>from sklearn.metrics import mean_absolute_error</strong></li>
+<li><strong>同时，我们也可以用交叉验证中的scoring=”neg_mean_absolute_error”</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>是否拟合了足够的信息</strong></p>
+<ul>
+<li><strong>对于回归类算法，只探索数据预测是否准确是不足够的。除了数据本身的数值大小之外，我们还希望我们的模型能够捕捉到数据的”规律“，比如数据的分布规律（抛物线），单调性等等。而是否捕获到这些信息是无法使用MSE来衡量的。</strong><br><img src="https://img-blog.csdnimg.cn/20210415202822818.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+<li><p><strong>看这张图，其中红色是我们的真实标签，而蓝色线是我们模型预测的值。这是一种比较极端的情况，但极有可能发生。这张图像上前半部分的拟合非常成功，看上去我们的真实标签和我们的预测结果几乎重合，但后半部分的拟合非常糟糕，模型向着与真实标签完全相反的方向去了。对于这样的一个拟合模型，如果我们使用MSE来对它进行判断，它的MSE会很小，因为大部分样本其实都被完美拟合了，少数样本的真实值与预测值的巨大差异在被均分到每个样本上之后，MSE就会很小。但这样的拟合结果不是一个好的结果，因为一旦我的新样本是处于拟合曲线的后半段的，我的预测结果必然会有巨大的偏差。所以，我们希望找到新的指标，除了判断预测的数值是否正确之外，还能够判断我们的模型是否拟合了足够多的，数值之外的信息。</strong></p>
+</li>
+<li><p><strong>在我们学习降维选择，我们提到我们使用方差来衡量数据上的信息量。如果方差越大，代表数据上的信息量越多，而这个信息量（数据潜在的规律）不仅包括了数值的大小，还包括了我们希望模型捕捉的那些规律。为了衡量模型对数据上的信息量的捕捉，我们定义了$R^2$来帮助我们:</strong><br>$R^2=1-\frac{\sum_{i=0}^m(y_i-\hat{y_i})^2}{\sum_{i=0}^m(y_i-\bar{y})^2}=1-\frac{RSS}{\sum_{i=0}^m(y_i-\bar{y})^2}$</p>
+</li>
+<li><p><strong>其中，y是我们的真实标签，$\hat{y}$是我们的预测结果，$\bar{y}$是我们的均值，$y_i-\bar{y}$如果除以样本量m就是我们的方差。方差的本质是任意一个y值和样本均值的差异，差异越大，这些值所带的信息越多。在$R^2$中，分子是真实值和预测值之间的差值，也就是我们的模型没有捕获到的信息总量，分母是真实标签所带的信息量，所以其衡量的是1-我们的模型没有捕获到的信息量占真实标签中所带的信息量的比例，所以，$R^2$越接近1越好。</strong></p>
+</li>
+<li><p>分母其实可以表示称为样本的潜在规律，分子为模型的误差（损失），那么样本数据潜在的规律是不变的，则误差越小则分子分母表达式返回的结果越小，则$R^2越接近1$</p>
+</li>
+<li><p><strong>可以用三方式来调用</strong></p>
+<ul>
+<li><strong>一种是直接从metrics中导入r2_score,输入预测值和真实值打分</strong></li>
+<li><strong>第二种是直接从线性回归LinerRegression的接口score来调用</strong></li>
+<li><strong>第三种是在交叉验证中，输入“r2”来调用</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"></span><br><span class="line">print(r2_score(y_test, liner.predict(x_test)))</span><br><span class="line">print(liner.score(x_test, y_test))</span><br><span class="line">print(cross_val_score(liner, x_train, y_train, cv=<span class="number">5</span>, scoring=<span class="string">'r2'</span>).mean())</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>绘制拟合图</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.plot(range(len(y_test)), sorted(y_test), c=<span class="string">'black'</span>, label=<span class="string">'y_true'</span>)</span><br><span class="line">plt.plot(range(len(y_pred)), sorted(y_pred), c=<span class="string">'red'</span>, label=<span class="string">'y_pred'</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210416103056748.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p><strong>可见，虽然我们的大部分数据被拟合得比较好，但是图像的开头和结尾处却又着较大的拟合误差。如果我们在图像右侧分布着更多的数据，我们的模型就会越来越偏离我们真正的标签。这种结果类似于我们前面提到的，虽然在有限的数据集上将数值预测正确了，但却没有正确拟合数据的分布，如果有更多的数据进入我们的模型，那数据标签被预测错误的可能性是非常大的。</strong></p>
+</li>
+<li><p><strong>实战</strong></p>
+<ul>
+<li><strong>房地产估价数据集</strong><ul>
+<li><strong>数据集信息</strong>  <ul>
+<li><strong>房地产估值的市场历史数据集来自台湾新北市新店区。“房地产估价” 是一个回归问题。</strong></li>
+</ul>
+</li>
+<li><strong>属性信息</strong></li>
+<li>输入 <ul>
+<li>X1 =交易日期（例如，2013.250 = 2013年3月，2013.500 = 2013年6月，等等）</li>
+<li>X2 =房屋年龄（单位：年）</li>
+<li>X3 =到最近的捷运站的距离（单位：米） ）</li>
+<li>X4 =步行生活圈中的便利店的数量（整数）</li>
+<li>X5 =地理坐标，纬度。（单位：度）</li>
+<li>X6 =地理坐标，经度。（单位：度）</li>
+</ul>
+</li>
+<li>输出结果 <ul>
+<li>Y =单位面积的房价（10000新台币/ Ping，其中Ping是本地单位，1 Ping = 3.3米平方） <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error <span class="keyword">as</span> MSE</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets <span class="keyword">as</span> datasets</span><br><span class="line"></span><br><span class="line">df = pd.read_excel(<span class="string">'Real estate valuation data set.xlsx'</span>)</span><br><span class="line">df.drop(labels=<span class="string">'No'</span>, axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># print(df.head())</span></span><br><span class="line"><span class="comment"># print(df)</span></span><br><span class="line">feature = df.loc[:, df.columns != <span class="string">'Y house price of unit area'</span>]</span><br><span class="line">target = df[<span class="string">'Y house price of unit area'</span>]</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">2021</span>)</span><br><span class="line">linner = LinearRegression().fit(x_train, y_train)</span><br><span class="line"><span class="comment"># 模型在测试集的表现</span></span><br><span class="line">y_true = y_test</span><br><span class="line">y_pred = linner.predict(x_test)</span><br><span class="line">print(MSE(y_true, y_pred))</span><br><span class="line">print(y_true.max())</span><br><span class="line">print(y_true.min())</span><br><span class="line">print(r2_score(y_true, y_pred))</span><br><span class="line"><span class="comment"># 模型在训练集的表现</span></span><br><span class="line">print(MSE(y_train, linner.predict(x_train)))</span><br><span class="line">print(r2_score(y_train, linner.predict(x_train)))</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>总结</strong></p>
+<ul>
+<li><strong>欠拟合：(对训练集的数据和测试集的数据拟合的都不是很好)<br>原因：模型学习到样本的特征太少<br>解决：增加样本的特征数量（多项式回归）<br>多项式回归：from sklearn.preprocessing import PolynomialFeatures<br>在原有特征的基础上增加高次方特征</strong></li>
+<li>**过拟合：(对训练集的数据高度拟合，对测试集的数据拟合的很离谱)<br>原因：原始特征过多，存在一些嘈杂特征。<br>解决：1.进行特征选择，消除关联性大的特征</li>
+</ul>
+</li>
+</ul>
+<p>2.正则化之岭回归：from sklearn.linear_model import Ridge<br>将对模型影响较大的特征(高次方)的权重系数变小，将模型弯曲程度大的地方捋直一定，降低关联性大的特征对预测模型的影响**</p>
+<ul>
+<li><strong>模型的保存和加载</strong><ul>
+<li><strong>方式一 (推荐)：from sklearn.externals import joblib<br>joblib.dump(model,’xxx.m’):保存<br>joblib.load(‘xxx.m’):加载</strong> </li>
+<li><strong>方式二：import pickle<br>with open(‘./123.pkl’,’wb’) as fp:<br>pickle.dump(linner,fp)<br>with open(‘./123.pkl’,’rb’) as fp:<br>linner = pickle.load(fp)</strong></li>
+</ul>
+</li>
+<li><strong>欠拟合&amp;&amp;过拟合</strong><ul>
+<li><strong>欠拟合：一个假设在训练数据上不能获得很好的拟合，但是在训练数据以外的数据集上也不能很好的拟合数据，此时认为这个假设出现了欠拟合的现象。（模型过于简单）</strong> </li>
+<li><strong>过拟合：一个假设在训练数据上能够获得比其他假设更好的拟合，但是在训练数据以外的数据集上却不能很好的拟合数据，此时认为这个假设出现了过拟合现象。（模型过于复杂）</strong><br><img src="https://img-blog.csdnimg.cn/20210419094225745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+<li><strong>欠拟合和过拟合问题的解决</strong><ul>
+<li><strong>欠拟合：</strong> <ul>
+<li><strong>原因：模型学习到样本的特征太少</strong> </li>
+<li><strong>解决：增加样本的特征数量（多项式回归）</strong></li>
+</ul>
+</li>
+<li><strong>过拟合：</strong><ul>
+<li><strong>原因：原始特征过多，存在一些嘈杂特征。</strong></li>
+<li><strong>解决：</strong><ul>
+<li><strong>进行特征选择，消除关联大的特征（很难做）</strong></li>
+<li><strong>正则化之岭回归</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>模型的复杂度：回归出直线or曲线</strong><ul>
+<li><strong>我们的回归模型最终回归出的一定是直线吗(y=wx+b)？有没有可能是曲线（非线性）呢（y=wx^2+b）？</strong>     <ul>
+<li><strong>我们都知道回归模型算法就是在寻找特征值和目标值之间存在的某种关系，那么这种关系越复杂则表示训练出的模型的复杂度越高，反之越低。</strong> </li>
+<li><strong>模型的复杂度是由特征和目标之间的关系导致的！特征和目标之间的关系不仅仅是线性关系！</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>欠拟合的处理：多项式回归</strong><ul>
+<li><strong>为了解决欠拟合的情况，经常需要提高线性的次数（高次多项式）建立模型拟合曲线，次数过多会导致过拟合，次数不够会欠拟合</strong><ul>
+<li><strong>y=w*x+b一次多项式函数</strong></li>
+<li><strong>y=w1 * x^2+w2 * x+b 二次多项式函数</strong></li>
+<li><strong>y=w1 * x^3 +w2 * x^2+w3 * x+b 三次多项式函数</strong> </li>
+<li>……</li>
+<li><strong>高次多项式函数表示为曲线</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>相对于线性回归模型y=wx+b只能解决线性(回归出的为直线)问题，多项式回归能够解决非线性回归（回归出的为曲线）问题。</strong>  </li>
+<li><strong>拿最简单的线性模型来说，其数学表达式可以表示为：y=wx+b，它表示的是一条直线，而多项式回归则可以表示成：y=w1 * x^2+w2 * x+b,它表示的是二次曲线，实际上，多项式回归可以看成特殊的线性模型，即把x∧2看成一个特征，把x看成另一个特征，这样就可以表示成y=w1z+w2x+b,其中z=x∧2,这样多项式回归实际上就变成线性回归了。</strong></li>
+<li><strong>当然还可以将y=wx+b转为更高次的多项式。是否需要转成更高次的多项式取决于我们想要拟合样本的程度了，更高次的多项式可以更好的拟合我们的样本数据，但是也不是一定的，很可能会造成过拟合。</strong></li>
+<li><strong>示例：根据蛋糕大小预测价格</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 样本训练数据，特征，目标</span></span><br><span class="line">x_train = [[<span class="number">6</span>], [<span class="number">8</span>], [<span class="number">10</span>], [<span class="number">16</span>], [<span class="number">18</span>]]  <span class="comment"># 大小</span></span><br><span class="line">y_train = [[<span class="number">7</span>], [<span class="number">9</span>], [<span class="number">15</span>], [<span class="number">17.5</span>], [<span class="number">18</span>]]  <span class="comment"># 价格</span></span><br><span class="line"><span class="comment"># 一次线性回归的学习和预测y=wx+b</span></span><br><span class="line">re = LinearRegression()</span><br><span class="line">re.fit(x_train, y_train)</span><br><span class="line"><span class="comment"># 画出一次线性回归的拟合曲线</span></span><br><span class="line">xx = np.linspace(<span class="number">0</span>, <span class="number">25</span>, <span class="number">100</span>)</span><br><span class="line">xx = xx.reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">yy = re.predict(xx)</span><br><span class="line">plt.scatter(x_train, y_train)  <span class="comment"># 原始样本数据的分布规律</span></span><br><span class="line">plt.plot(xx, yy)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><strong>建立二次多项式线性回归模型进行预测</strong><ul>
+<li><strong>根据二次多项式可知，需要给原始特征添加更高次特征数据x^2</strong></li>
+<li><strong>如何给样本添加高次的特征数据？</strong><ul>
+<li><strong>使用sklearn.preprocessing import PolynomialFeatures来进行更高次特征的构造</strong><ul>
+<li><strong>它是使用多项式的方法来构造的。如果有a，b两个特征，那么它的2次多项式为（1，a,b,a^2 ,ab,b^2）</strong>   </li>
+<li><strong>PolynomialFeatures有三个参数：</strong><ul>
+<li><strong>degree：控制多项式的度</strong> </li>
+<li><strong>interaction_only：默认为False，如果指定为True，那么就不会有特征和特征自己结合的项，上面的二次项没有a^2, b^2</strong></li>
+<li><strong>include_bias：默认为True。如果为False的话，那么就不会有上面的1那一项</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 样本训练数据，特征，目标</span></span><br><span class="line">x_train = [[<span class="number">6</span>], [<span class="number">8</span>], [<span class="number">10</span>], [<span class="number">16</span>], [<span class="number">18</span>]]  <span class="comment"># 大小</span></span><br><span class="line">y_train = [[<span class="number">7</span>], [<span class="number">9</span>], [<span class="number">15</span>], [<span class="number">17.5</span>], [<span class="number">18</span>]]  <span class="comment"># 价格</span></span><br><span class="line"><span class="comment"># 一次线性回归的学习和预测y=wx+b</span></span><br><span class="line">re = LinearRegression()</span><br><span class="line">re.fit(x_train, y_train)</span><br><span class="line"><span class="comment"># 画出一次线性回归的拟合曲线</span></span><br><span class="line">xx = np.linspace(<span class="number">0</span>, <span class="number">25</span>, <span class="number">100</span>)</span><br><span class="line">xx = xx.reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">yy = re.predict(xx)</span><br><span class="line">plt.scatter(x_train, y_train)  <span class="comment"># 原始样本数据的分布规律</span></span><br><span class="line">plt.plot(xx, yy)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数degree控制增加特征的次数</span></span><br><span class="line"><span class="comment"># 参数interaction_only默认为False是有二次项，如果变成True就会去掉二次项</span></span><br><span class="line"><span class="comment"># 参数include_bias默认为True，如果是False就是不要增加出来的1那一项</span></span><br><span class="line">c = [[<span class="number">5</span>, <span class="number">10</span>]]</span><br><span class="line">pl = PolynomialFeatures()</span><br><span class="line">b = pl.fit_transform(c)</span><br><span class="line">print(b)</span><br><span class="line"><span class="comment"># 建立二次多项式回归模型进行预测</span></span><br><span class="line">poly2 = PolynomialFeatures(degree=<span class="number">2</span>)  <span class="comment"># 2次多项式特征生成器</span></span><br><span class="line">x_train_poly2 = poly2.fit_transform(x_train)</span><br><span class="line"><span class="comment"># 建立模型预测</span></span><br><span class="line">liner_poly2 = LinearRegression()</span><br><span class="line">liner_poly2.fit(x_train_poly2, y_train)</span><br><span class="line"><span class="comment"># 画二次多项式回归的图</span></span><br><span class="line">xx_poly2 = poly2.transform(xx)</span><br><span class="line">yy_poly2 = liner_poly2.predict(xx_poly2)</span><br><span class="line">plt.scatter(x_train, y_train)</span><br><span class="line">plt.plot(xx, yy, label=<span class="string">'Degree1'</span>)</span><br><span class="line">plt.plot(xx, yy_poly2, label=<span class="string">'Degree2'</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br><span class="line">poly3 = PolynomialFeatures(degree=<span class="number">4</span>)</span><br><span class="line">x_train_poly3 = poly3.fit_transform(x_train)</span><br><span class="line">liner_poly3 = LinearRegression()</span><br><span class="line">liner_poly3.fit(x_train_poly3, y_train)</span><br><span class="line">xx_poly3 = poly3.transform(xx)</span><br><span class="line">yy_poly3 = liner_poly3.predict(xx_poly3)</span><br><span class="line">plt.scatter(x_train, y_train)</span><br><span class="line">plt.plot(xx, yy, label=<span class="string">'Degree1'</span>)</span><br><span class="line">plt.plot(xx, yy_poly3, label=<span class="string">'Degree2'</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>过拟合处理：正则化</strong><ul>
+<li><strong>将过拟合的曲线的凹凸幅度减少就可以将过拟合曲线趋近于拟合曲线了。那么过拟合曲线的凹凸肯定是由y=wx</strong>2+x<strong>3+x</strong>4中的高次项导致的**</li>
+<li><strong>那么L2正则化就是通过将高次项的特征的权重w调小到趋近于0，则高次项的特征就几乎没有了，那么凹凸幅度就会减少，就越趋近于拟合曲线了！</strong> </li>
+<li><strong>LinnerRegression是没有办法进行正则化的，所以该算法模型容易出现过拟合，并且无法解决。</strong></li>
+<li><strong>L2正则化：使用带有正则化算法的回归模型（Ridge岭回归）处理过拟合的问题。</strong></li>
+</ul>
+</li>
+<li><strong>Ridge岭回归：具备L2正则化的线性回归模型</strong><ul>
+<li><strong>API：from sklearn.linear_model import Ridge</strong>  </li>
+<li><strong>Ridge(alpha=1.0)：</strong><ul>
+<li><strong>alpha:正则化的力度，力度越大，则表示高次项的权重w越接近于0，导致过拟合曲线的凹凸幅度越小。<br>取值：0-1小数或者1-10整数</strong> </li>
+<li><strong>coef_:回归系数</strong></li>
+</ul>
+</li>
+<li><strong>使用岭回归可以通过控制正则化力度参数alpha降低高次项特征的权重</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> Ridge</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br><span class="line"></span><br><span class="line"><span class="comment"># 样本的训练数据，特征和目标值</span></span><br><span class="line">x_train = [[<span class="number">6</span>], [<span class="number">8</span>], [<span class="number">10</span>], [<span class="number">14</span>], [<span class="number">18</span>]] <span class="comment">#大小</span></span><br><span class="line">y_train = [[<span class="number">7</span>], [<span class="number">9</span>], [<span class="number">13</span>], [<span class="number">17.5</span>], [<span class="number">18</span>]]<span class="comment">#价格</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在原有特征上增加3次方特征</span></span><br><span class="line">p = PolynomialFeatures(degree=<span class="number">3</span>)</span><br><span class="line">d_3_train = p.fit_transform(x_train)</span><br><span class="line">linear = LinearRegression().fit(d_3_train,y_train)</span><br><span class="line"><span class="comment"># 原本线性回归权重系数</span></span><br><span class="line">linear.coef_</span><br><span class="line"></span><br><span class="line">array([[ <span class="number">0.</span>        , <span class="number">-1.42626096</span>,  <span class="number">0.31320489</span>, <span class="number">-0.01103344</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用L2正则化力度调整权重系数</span></span><br><span class="line"><span class="comment"># 参数alpha正则化力度，可以通过学习曲线寻找最优alpha值</span></span><br><span class="line">ridge = Ridge(alpha=<span class="number">0.5</span>)</span><br><span class="line">ridge.fit(d_3_train,y_train)</span><br><span class="line">ridge.coef_</span><br><span class="line"><span class="comment"># 调整后权重系数,明显将高权重的变低了</span></span><br><span class="line">array([[ <span class="number">0.</span>        , <span class="number">-0.14579637</span>,  <span class="number">0.19991159</span>, <span class="number">-0.00792083</span>]])</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><strong>岭回归的优点：</strong><ul>
+<li><strong>获取的回归系数更符合实际更可靠</strong> </li>
+<li><strong>在病态数据（异常值多的数据）偏多的研究中有更大的存在意义</strong></li>
+</ul>
+</li>
+<li><strong>模型的保存和加载</strong><ul>
+<li><strong>方式一 (推荐使用方式一，更加便捷)</strong><ul>
+<li><strong>from sklearn.externals import joblib<br>joblib.dump(model,’xxx.m’):保存<br>joblib.load(‘xxx.m’):加载</strong></li>
+</ul>
+</li>
+<li><strong>方式二</strong><ul>
+<li><strong>import pickle<br>with open(‘./123.pkl’,’wb’) as fp:<br>pickle.dump(linner,fp)<br>with open(‘./123.pkl’,’rb’) as fp:<br>linner = pickle.load(fp)</strong><h3 id="朴素贝叶斯算法"><a href="#朴素贝叶斯算法" class="headerlink" title="朴素贝叶斯算法"></a>朴素贝叶斯算法</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>在许多分类算法应用中，特征和标签之间的关系并非是决定性的。比如说，我们想预测一个人究竟是否会在泰坦尼克号海难中生存下来，那我们可以建立某个分类模型来学习我们的训练集。在训练中，其中一个人的特征为:30岁，男，普 通舱，他最后在泰坦尼克号海难中去世了。当我们测试的时候，我们发现有另一个人的特征也为:30岁，男，普通 舱。基于在训练集中的学习，我们的模型必然会给这个人打上标签:去世。然而这个人的真实情况一定是去世了吗?并非如此。也许这个人是心脏病患者，得到了上救生艇的优先权。又有可能，这个人就是挤上了救生艇，活了下来。对分类算法 来说，基于训练的经验，这个人“很有可能”是没有活下来，但算法永远也无法确定”这个人一定没有活下来“。即便这 个人最后真的没有活下来，算法也无法确定基于训练数据给出的判断，是否真的解释了这个人没有存活下来的真实情况。</strong></li>
+<li><strong>这就是说，算法得出的结论，永远不是100%确定的，更多的是判断出了一种“样本的标签更可能是某类的可能性”，而非一种“确定”。我们通过模型算法的某些规定，来强行让算法为我们返回一个固定的分类结果。但许多时候，我们也希望能够理解算法判断出结果的可能性概率。</strong></li>
+<li><strong>无论如何，我们都希望使用真正的概率来衡量可能性，因此就有了真正的概率算法:朴素贝叶斯。</strong></li>
+<li><strong>朴素贝叶斯是一种直接衡量标签和特征之间的概率关系的有监督学习算法，是一种专分类的算法。朴素贝叶斯的算法根源是基于概率论与数理统计的贝叶斯理论。</strong></li>
+<li><strong>概率计算准则：联合概率和条件概率</strong><ul>
+<li><strong>联合概率：包含多个条件，且所有条件同时成立的概率</strong><ul>
+<li><strong>记作P(A,B)</strong></li>
+<li><strong>P(A,B)=P(A)P(B)</strong> </li>
+</ul>
+</li>
+<li><strong>条件概率：就是事件A在另外一个事件B已经发生条件下的概率</strong><ul>
+<li><strong>记作P(A|B)</strong></li>
+<li><strong>特性：P(A1,A2|B)=P(A1|B)P(A2|B)</strong></li>
+<li><strong>注意：此条件概率的成立，是由于A1,A2相互独立的结果</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/2021042016450480.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>**-女神喜欢一个人的概率：4/7</li>
+<li>职业是程序员并且体型匀称的概率：3/7*4/7=12/49</li>
+<li>在女神喜欢的条件下，职业是程序员的概率：2/4=1/2</li>
+<li>在女神喜欢的条件下，职业是产品，体重超重的概率：2/4<em>1/4=1/8*</em></li>
+<li><strong>注意：</strong><ul>
+<li><strong>上述的求概率公式只适用于各个特征之间是条件独立（每个特征之间没有必然关系）的。条件不独立指的是特征之间有关联的比如，体重和是否喜欢吃零食这两个条件之间就有关联。</strong><ul>
+<li><strong>朴素贝叶斯只适用于特征之间是条件独立的情况下。否则分类效果不好。这里的朴素指的就是条件独立</strong></li>
+<li><strong>朴素贝叶斯主要被广泛的适用于文档分类中！</strong> </li>
+<li><strong>朴素贝叶斯的分类</strong></li>
+<li><strong>在sk-learn中提供了三种不同类型的贝叶斯模型算法</strong>  </li>
+<li><strong>高斯模型</strong></li>
+<li><strong>多项式模型</strong></li>
+<li><strong>伯努利模型</strong> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>高斯模型</strong><ul>
+<li><strong>介绍</strong><ul>
+<li>*<em>大家在学习高等数学时，应该学过高斯分布，也就是正态分布，是一种连续型变量的概率分布。简单来说，高斯分布就是当频率直方图的区间变得特别小时的拟合曲线，像座小山峰，其中两端的特别小，越往中间越高。<br>*</em> <ul>
+<li><strong>所谓正态分布，就是正常形态的分布,它是自然界的一种规律。现实生活中有很多现象均服从高斯分布，比如收入，身高，体重等，大部分都处于中等水平，特别少和特别多的比例都会比较低。</strong></li>
+<li><strong>高斯分布（正态分布）</strong> </li>
+<li><strong>在数学中往往正态分布被称为高斯分布</strong></li>
+<li><strong>通过假设P(xi|Y)是服从高斯分布(也就是正态分布)，来估计训练集数据的每个特征分到每个类别Y的条件概率P是多少（估计每个特征下对应每个类别的条件概率）。对于每个特征下的对应每个分类结果概率的取值，高斯朴素贝叶斯有如下公式:</strong> </li>
+<li><strong>exp函数为高等数学里以自然常数e为底的指数函数</strong></li>
+<li>$P(x_i|Y)=f(x_i;\mu_y,σ_y)*\epsilon=\frac{1}{\sqrt{2\piσ_y^2}}exp(-\frac{(x_i-\mu_y)^2}{2σ_y^2})$<br>$\circ$ Y:分类的类别<br>$\circ$ x:分类的特征<br>$\circ$ 特征所属标签的均值(𝜇)和标准差(𝛔)<br>$\circ$ 每个特征x分到每个类别Y的条件概率P，比如一个人的身高，体重，三维三个特征，其中一个特征占这个丑美类别的概率</li>
+<li><strong>什么是连续性变量和离散型变量</strong></li>
+<li><strong>离散变量：是指其数值只能用自然数或整数单位计算的则为离散变量.例如,企业个数,职工人数,设备台数等,只能按计量单位数计数,这种变量的数值一般用计数方法取得</strong> </li>
+<li><strong>连续性变量：在一定区间内可以任意取值的变量叫连续变量,其数值是连续不断的,相邻两个数值可作无限分割,即可取无限个数值.例如,生产零件的规格尺寸,人体测量的身高,体重,胸围等为连续变量,其数值只能用测量或计量的方法取得</strong></li>
+<li><strong>高斯分布模型的作用：</strong></li>
+<li><strong>在贝叶斯分类中，高斯模型就是用来处理连续型特征变量的，当使用此模型时，我们会假定特征属于高斯分布，然后基于训练样本计算特征所属标签的均值(𝜇)和标准差(𝛔)，这样就可以估计某个特征属于某个类别的概率。</strong><ul>
+<li>比如：判断一个人帅还是丑，则帅&amp;丑就是分类的标签，一个人的特征假设有身高、体重，三围，则高斯分布函数会计算身高的特征分到帅的条件概率P和丑的条件概率P，在计算体重的特征分到帅和丑的条件概率，以此类推。</li>
+</ul>
+</li>
+<li><strong>对于任意一个Y的取值，高斯函数都以求解最大化的P为目标，这样我们才能够比较在不同标签下我们的样本究竟更靠近哪一个取值。以最大化P为目标，高斯函数会为我们求解公式中的参数𝜇y和𝛔y。求解出参数后，带入一个xi的值，就能够得到一个P的概率取值。</strong><ul>
+<li>比如基于上述案例，将高斯函数将身高这个特征分到帅的概率为70%，分到丑的概率为30%，则基于最大化P的准则，高斯函数返回的结果为70%，就表示特征身高偏向于让带有身高特征的样本数据分到帅的类别。剩下的体重和三围以此类推。然后将每一个特诊分到每一个类别的最大概率进行标签（类别）的均值计算和方差计算返回类似每一个特征的系数w。</li>
+<li>最后就相当于于基于训练数据就可以求解出每一个特征对应的高斯函数的结果，该结果就表示该特征更偏向于将该条样本分到哪一个类别，也可以将每一个特征的高斯函数返回值作为类似线性回归中的系数w。</li>
+</ul>
+</li>
+<li><strong>高斯模型API：</strong></li>
+<li><strong>from sklearn.naive_bayes import GuassianNB</strong>   </li>
+<li><strong>实例化模型对象的时候，我们不需要对高斯朴素贝叶斯输入任何的参数，可以说是非常轻量级的类，操作非常容易。但过于简单也意味着贝叶斯没有太多的参数可以调整，因此贝叶斯算法的成长空间并不是太大，如果</strong></li>
+<li>高斯模型作用在手写数字识别案例中</li>
+<li><strong>predict_proba():给出每一个测试集样本属于每个类别的概率，最大的就是分类结果</strong></li>
+<li><strong>predict_log_proba():predict_proba的对数化，最大的就是分类结果</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_digits</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">data = load_digits()</span><br><span class="line">feature = data[<span class="string">'data'</span>]</span><br><span class="line">target = data[<span class="string">'target'</span>]</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">2021</span>)</span><br><span class="line">nb = GaussianNB()</span><br><span class="line">nb.fit(x_train, y_train)</span><br><span class="line">print(nb.score(x_test, y_test))</span><br><span class="line">print(nb.predict(x_test[<span class="number">4</span>].reshape(<span class="number">1</span>, <span class="number">-1</span>)))</span><br><span class="line">print(y_test[<span class="number">4</span>])</span><br><span class="line">print(y_test[:<span class="number">10</span>])  <span class="comment"># 真实分类结果</span></span><br><span class="line">print(nb.predict(x_test)[:<span class="number">10</span>])  <span class="comment"># 模型分类结果</span></span><br><span class="line">print(nb.predict_log_proba(x_test[<span class="number">5</span>].reshape(<span class="number">1</span>, <span class="number">-1</span>)))</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>将高斯模型作用到鸢尾花分类中</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_digits</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">data1 = load_iris()</span><br><span class="line">f = data1.data</span><br><span class="line">t = data1.target</span><br><span class="line">x1_train, x1_test, y1_train, y1_test = train_test_split(f, t, test_size=<span class="number">0.2</span>, random_state=<span class="number">2021</span>)</span><br><span class="line">nb = GaussianNB()</span><br><span class="line">nb.fit(x_train, y_train)</span><br><span class="line">nb.fit(x1_train, y1_train)</span><br><span class="line">print(nb.score(x1_test, y1_test))</span><br><span class="line">print(nb.predict(x1_test[<span class="number">0</span>].reshape(<span class="number">1</span>, <span class="number">-1</span>)))</span><br><span class="line">print(y1_test[<span class="number">0</span>])</span><br><span class="line">print(nb.predict_proba(x1_test[<span class="number">0</span>].reshape(<span class="number">1</span>, <span class="number">-1</span>)))</span><br><span class="line">print(nb.predict_log_proba(x1_test[<span class="number">0</span>].reshape(<span class="number">1</span>, <span class="number">-1</span>)))</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>多项式模型 (离散特征的概率计算)</strong></p>
+<ul>
+<li><strong>与高斯分布相反，多项式主要适用于离散特征的概率计算，且sklearn的多项式模型不接受负值。虽然sklearn中的多项式模型也可以被用作在连续性特征概率计算中，但是我们如果想要处理连续性变量则最好选择高斯模型</strong><ul>
+<li><strong>注意：因为多项式不接受负值的输入，所以样本数据的特征为数值型数据的话，务必要进行归一化处理保证特征数据中无负值出现！！！</strong></li>
+<li><strong>原理：计算出一篇文章为某些类别的概率（文章是固定的，也就是说在该文章为前提下求出所属类别的概率，因此文章就是概率论中条件概率的条件），最大概率的类型就是该文章的类别。</strong> </li>
+<li><strong>P(类别|文章)：类别可以为军事，财经，体育等等，文章其实就是一个又一个的词语</strong></li>
+<li>P(体育|词1，词2，词3……)==1/6</li>
+<li>P(财经|词1，词2，词3……)==1/3<br>则该文章属于财经类别，那么P(财经|词1，词2，词3……)如何计算值呢？如何计算多个条件下一个结果的概率呢？<br>记作：P(A|B)<br>特性：P(A1,A2|B)=P(A1|B)P(A2|B)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>朴素贝叶斯算法公式</strong></p>
+<ul>
+<li>$P(C|W)=\frac{P(W|C)P(C)}{P(W)}$</li>
+<li><strong>公式可以理解为：</strong><ul>
+<li>$P(C|F1,F2…)=\frac{P(F1,F2…|C)P(C)}{P(F1,F2…)}$  </li>
+</ul>
+</li>
+<li><strong>细节解释：</strong><ul>
+<li><strong>w为给定文档的特征，也就是文章中拆分出来的不同词语</strong></li>
+<li><strong>c为文档的类别（财经，体育，军事…）</strong></li>
+</ul>
+</li>
+<li><strong>那么：一篇文档为财经和军事的概率计算如下</strong><ul>
+<li><strong>P(财经|词1，词2，词3) ==》P(词1，词2，词3|财经)*P(财经)/P(W)</strong></li>
+<li><strong>P(军事|词1，词2，词3) ==》P(词1，词2，词3|军事)*P(军事)/P(W)</strong> </li>
+<li><strong>上述两个公式中都有想用的P(W),可以抵消，则公式简化为:</strong><ul>
+<li><strong>P(词1，词2，词3|财经)*P(财经)==》P(W|C)P(C)</strong>  </li>
+<li><strong>P(词1，词2，词3|军事)*P(军事) ==》P(W|C)P(C)</strong> </li>
+<li>这样的公式我们是可以进行计算的，这就是条件概率</li>
+</ul>
+</li>
+<li><strong>P(C):每个文档类别的概率(某个文档类别文章的数量/总文档数量)</strong></li>
+<li><strong>P(W|C):给定类别下特征的概率，此处的特征就是预测文档中出现的词语</strong><ul>
+<li><strong>P(W|C)的计算方法：</strong><ul>
+<li><strong>P(F1|C)=Ni/N:F1为预测文档中的某一个词，C为指定的类别</strong><ul>
+<li><strong>Ni:F1这个词在C类别所有文档中出现的次数</strong></li>
+<li><strong>N:所属类别C下的文档所有词出现的次数和</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>思考：属于某个类别的概率为0，合适吗？</strong><ul>
+<li><strong>肯定不合适，虽然被预测文章中没有出现云计算这个词语，但是出现娱乐类别中的其他词，所以概率为0不合适！那么如何处理呢？</strong> </li>
+<li><strong>解决方法：拉普拉斯平滑系数</strong></li>
+<li>$P(F1|C)=\frac{Ni+\alpha}{N+\alpha m}$</li>
+<li><strong>$\alpha$为指定的系数一般为1，m为训练文档中统计出的特征词个数</strong></li>
+<li><strong>多项式朴素贝叶斯API</strong><ul>
+<li><strong>from sklearn.naive_bayes import MultinomialNB</strong> </li>
+<li><strong>MultinomialNB(alpha=1.0, fit_prior=True, class_prior=None)</strong><ul>
+<li><strong>alpha:拉普拉斯平滑系数</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>sklearn文本提取——TfidfVectorizer(求出Ni/N的值)</strong><ul>
+<li><strong>什么是TF-IDF?</strong><ul>
+<li><strong>在信息检索中，tf-idf（词频-逆文档频率）是一种统计方法，用以评估一个单词在一个文档集合或语料库中的重要程度。</strong></li>
+</ul>
+</li>
+<li><strong>原理</strong><ul>
+<li><strong>TF-IDF实际上是：TF*IDF。主要思想：如果某个词或某个短语在一篇文章出现的频率高（即TF高），则认为此词具有很好的类别区分能力，适合用来分类。</strong></li>
+</ul>
+</li>
+<li><strong>TF：表示一个给定词语t在一篇给定文档d中出现的频率。TF越高，则词语t对文档d来说越重要，TF越低，则词语t对文档d来说越不重要。那是否可以以TF作为文本相似度评价标准呢？答案是不行的，举个例子，常用的中文词语如“我”，“了”，“是”等，在给定的一篇中文文档中出现的频率是很高的，但这些中文词几乎在每篇文档中都具有非常高的词频，如果以TF作为文本相似度评价标准，那么几乎每篇文档都能被命中。</strong><ul>
+<li><strong>TF(w)=(词w在文档中出现的次数)/(文档的总词数) == P(F1|C)=Ni/N</strong>      </li>
+</ul>
+</li>
+<li><strong>IDF：逆向文章频率。有些词可能在文本中频繁出现，但并不重要，也即信息量小，如is,of,that这些单词或者“我”，“了”，“是”等，这些单词在语料库中出现的频率也非常大，我们就可以利用这点，降低其权重。IDF(W)=log_e(语料库的总文档书)/(语料库词w《is，of……》出现的文档数。)</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>实战</strong><ul>
+<li><strong>数据使用- 实战：数据使用fetch_20newsgroups中的数据，包含了20个主题的18000个新闻组的帖子</strong><ul>
+<li><strong>流程</strong><ul>
+<li><strong>加载20类新闻数据，并进行样本分割<br>生成文章特征词<br>使用模型进行文章分类</strong> <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> MultinomialNB</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets <span class="keyword">as</span> datasets</span><br><span class="line"></span><br><span class="line">news = datasets.fetch_20newsgroups(subset=<span class="string">'all'</span>)</span><br><span class="line">feature = news.data</span><br><span class="line">target = news.target</span><br><span class="line"><span class="comment"># 特征提取，对文章进行特征抽取，特征值化（TF_IDF）文档提取</span></span><br><span class="line"><span class="comment"># 参数，input可以手动写内容</span></span><br><span class="line">t = TfidfVectorizer()</span><br><span class="line">feature_t = t.fit_transform(feature)  <span class="comment"># 返回的是比例Ni/N</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature_t, target, test_size=<span class="number">0.01</span>, random_state=<span class="number">2021</span>)</span><br><span class="line">m = MultinomialNB()</span><br><span class="line">m.fit(x_train, y_train)</span><br><span class="line">print(m.score(x_test, y_test))</span><br><span class="line">print(m.predict(x_test[<span class="number">10</span>]))</span><br><span class="line">print(y_test[<span class="number">10</span>])</span><br><span class="line">print(m.predict_log_proba(x_test[<span class="number">10</span>]).max())</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>注意：</strong></p>
+<ul>
+<li><strong>fit_transform()干了两件事，fit找到数据转换规则，并将数据标准化</strong></li>
+<li><strong>transform()：是将数据进行转换，比如数据的归一化和标准化，将测试数据按照训练数据同样的模型进行转换，得到特征向量。可以直接把转换规则拿来用，所以并不需要fit_transform(),否则，两次标准化的数据格式（或说数据参数）就不一样了。</strong> </li>
+</ul>
+</li>
+<li><p><strong>伯努利模型BernoulliNB - (只能做二分类) - 特征数据为二项分布</strong> </p>
+<ul>
+<li><strong>介绍：</strong><ul>
+<li><strong>多项式朴素贝叶斯可同时处理二项分布(抛硬币)和多项分布(掷骰子)，其中二项分布又叫做伯努利分布，它是一种现实中常见，并且拥有很多优越数学性质的分布。因此，既然有着多项式朴素贝叶斯，我们自然也就又专门用来处理二项分布的朴素贝叶斯:伯努利朴素贝叶斯。</strong> </li>
+<li><strong>与多项式模型一样，伯努利模型适用于离散特征的情况，所不同的是，数据集中可以存在多个特征，但每个特征都是二分类的.伯努利模型中每个特征的取值只能是1和0(以文本分类为例，某个单词在文档中出现过，则其特征值为1，否则为0).伯努利模型需要比MultinomialNB多定义一个二值化的方法，该方法会接受一个阈值并将输入的特征二值化(1，0).当然也可以直接采用MultinomialNB，但需要预先将输入的特征二值化.</strong></li>
+</ul>
+</li>
+<li><strong>作用：</strong><ul>
+<li><strong>伯努利朴素贝叶斯与多项式朴素贝叶斯非常相似，都常用于处理文本分类数据。但由于伯努利朴素贝叶斯是处理二项 分布，所以它更加在意的是“是与否”。判定一篇文章是否属于体育资讯，而不是说属于体育类还是娱乐类。</strong></li>
+</ul>
+</li>
+<li><strong>API：</strong><ul>
+<li><strong>class sklearn.naive_bayes.BernoulliNB (alpha=1.0, binarize=0.0, fit_prior=True, class_prior=None)</strong>    </li>
+<li><strong>参数计算</strong><ul>
+<li><strong>alpha：拉普拉斯平滑系数<br>binarize：可以是数值或者不输入。如果不输入，则BernoulliNB认为每个数据特征都已经是二元（二值化）的。否则的话，小于binarize的会归为一类，大于binarize的会归为另外一类</strong> <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">X = np.array([[<span class="number">1</span>, <span class="number">-2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">10</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">33</span>, <span class="number">4</span>, <span class="number">-90</span>],</span><br><span class="line">              [<span class="number">11</span>, <span class="number">29</span>, <span class="number">90</span>, <span class="number">-80</span>, <span class="number">0</span>, <span class="number">4</span>]])</span><br><span class="line">b = preprocessing.Binarizer(threshold=<span class="number">5</span>)</span><br><span class="line">X_b = b.transform(X)</span><br><span class="line">print(<span class="string">'二值化（闸值：5）'</span>, X_b)</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets <span class="keyword">as</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> BernoulliNB</span><br><span class="line"></span><br><span class="line">news = datasets.fetch_20newsgroups(subset=<span class="string">'all'</span>)</span><br><span class="line">feature = news.data</span><br><span class="line">target = news.target</span><br><span class="line">print(len(feature))</span><br><span class="line">print(len(target))</span><br><span class="line"><span class="comment"># 特征提取，对文章进行特征抽取，特征值化（TF_IDF）文档提取</span></span><br><span class="line"><span class="comment"># 参数，input可以手动写内容</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature, target, test_size=<span class="number">0.01</span>, random_state=<span class="number">2021</span>)</span><br><span class="line">t = TfidfVectorizer()</span><br><span class="line">x_train = t.fit_transform(x_train)</span><br><span class="line">x_test = t.transform(x_test)</span><br><span class="line">mlt = BernoulliNB()</span><br><span class="line">mlt.fit(x_train, y_train)</span><br><span class="line">y_predict = mlt.predict(x_test)</span><br><span class="line">print(<span class="string">'预测文章类别为'</span>, y_predict)</span><br><span class="line">print(<span class="string">'真实文章类别'</span>, y_test)</span><br><span class="line">print(<span class="string">'准确率为：'</span>, mlt.score(x_test, y_test))</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>朴素贝叶斯模型的分类优缺点</strong></p>
+<ul>
+<li><strong>优点：</strong><ul>
+<li><strong>朴素贝叶斯发源于古典数学理论，有稳定的分类效率</strong></li>
+<li><strong>对缺少数据不敏感，算法也比较简单，常用于文本分类</strong></li>
+<li><strong>分类准确度高，速度快</strong></li>
+</ul>
+</li>
+<li><strong>缺点：</strong><ul>
+<li><strong>由于使用了样本属性独立性的假设，所以如果样本有关联时，其效果不好</strong> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>逻辑回归</strong></p>
+<ul>
+<li><strong>在之前的课程中我们已经学习接触过相关的回归模型了，我们知道回归模型是用来处理和预测连续型标签的算法。然而逻辑回归，是一种名为“回归”的线性分类器，其本质是由线性回归变化而来的，一种广泛使用于分类问题中的广义回归算法。要理解逻辑回归从何而来，得要先理解线性回归。线性回归是机器学习中最简单的的回归算法，它写作一个几乎人人熟悉的方程（为了更好理解本节后面的讲解到的sigmod函数，下面的回归函数用z来表示）:</strong>     </li>
+<li>$z=\theta_0+\theta_1x_1+\theta_2x_2+……+\theta_nx_n$</li>
+<li><strong>其中θ0被称为截距，θ1~θn被称为系数，这个表达式我们可以用矩阵来表示这个方程，其中x和θ都可以看做是一个列矩阵，则有：</strong></li>
+<li>$z=\left[  \begin{array}{lcr}   θ_0&amp;θ_1&amp;θ_2&amp;···&amp;θ_n\end{array} \right]*\left[  \begin{array}{lcr}   x_0\x_1\x_2\···\x_n\end{array} \right]=θ^Tx(x_0=1)$</li>
+<li><strong>通过函数z，线性回归使用输入的特殊矩阵X来输出一组连续型的标签值y_pred,以完成各种预测连续型变量的任务（比如预测产品销量，预测股价等等）。</strong></li>
+<li><strong>那如果我们的标签是离散型变量，尤其是，如果是满足0-1分布的离散型变量，使用逻辑回归这个回归模型</strong></li>
+<li><strong>问题：回归模型可以实现分类效果吗？</strong></li>
+<li><strong>可以，使用sigmod函数</strong></li>
+</ul>
+</li>
+<li><p><strong>sigmod函数</strong> </p>
+<ul>
+<li><strong>我们可以通过引入sigmod函数，将线性回归方程z变换为g(z)，并且将g(z)的值分布在(0,1)之间，且当g(z)接近0时样本的标签为类别0，当g(z)接近1时样本的标签为类别1，这样就得到了一个分类模型。</strong> </li>
+<li>$g(z)=\frac{1}{1+e^{-z}}$<br><img src="https://img-blog.csdnimg.cn/20210426094234351.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+<li><p><strong>sigmod函数解释</strong></p>
+<ul>
+<li><strong>sigmod函数是一个s型的函数，当自变量z趋近于正无穷时，因变量g(z)趋近于1，而自变量趋近于负无穷时，因变量趋近于0，它能够将任何实数（非0和1的标签数据）映射到(0,1)区间，使其可用于将任意值函数转换为更适合二分类的函数。因为这个性质，sigmod函数也被当做是归一化的一种方法，与我们之前学过的MinMaxSclaer同理，是属于数据预处理中的“缩放”功能，可以将数据压缩到[0,1]之内。区别在于，MinMaxScaler归一化之后，是可以取到0和1的(最大值归一化后就是1，最小值归一化后就是0)，但Sigmoid函数只是无限趋近于0和1。</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">num = <span class="number">34.5</span></span><br><span class="line">print(<span class="number">1</span> / (<span class="number">1</span> + (np.e ** (-num))))</span><br><span class="line"></span><br><span class="line">num = <span class="number">-12</span></span><br><span class="line">print(<span class="number">1</span> / (<span class="number">1</span> + (np.e ** (-num))))</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>逻辑回归与线性回归的联系</strong></p>
+<ul>
+<li><strong>线性回归中 z=𝛉Tx，于是我们将z带入，就得到了二元逻辑回归模型的一般形式:</strong></li>
+<li>$g(z)=y(x)=\frac{1}{1+e^{-\theta^T x}}$</li>
+<li><strong>y(x)就是我们逻辑回归返回的标签值。此时y(x)的取值都在[0,1]之间，因此y(x)和1-y(x)相加必然为1。如果我们令y(x)除以1-y(x)可以得到形似几率的y(x)/1-y(x)，在此基础上取对数，可以很容易就得到:</strong></li>
+<li>$ln\frac{y(x)}{1-y(x)}=ln\frac{\frac{1}{1+e^{-\theta^T x}}}{1-\frac{1}{1+e^{-\theta^T x}}}=ln\frac{1}{e^{-\theta^T x}}=ln(e^{\theta x})=\theta x$ </li>
+<li><strong>不难发现，y(x)逻辑回归的形似几率取对数的本质其实就是我们的线性回归z，我们实际上是在对线性回归模型的预测结果取对数几率来让其的结果无限逼近0和1。因此，其对应的模型被称为”对数几率回归“(logistic Regression)，也就 是我们的逻辑回归，这个名为“回归”却是用来做分类工作的分类器。</strong> </li>
+<li><strong>逻辑回归的形似几率取对数就是线性回归<br>线性回归解的对数几率就是逻辑回归</strong></li>
+</ul>
+</li>
+<li><p><strong>因此逻辑回归是由线性回归变化而来的</strong></p>
+<ul>
+<li><strong>线性回归的核心任务是通过求解θ构建z这个预测函数，并希望预测函数z能够尽量拟合数据，因此逻辑回归的核心任务也是类似的:求解θ来构建一个能够尽量拟合数据的预测函数z，并通过向预测函数中输入特征矩阵来获取相应的标签值y。</strong><br><img src="https://img-blog.csdnimg.cn/20210426102654983.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+<li><p><strong>逻辑回归的优点</strong></p>
+<ul>
+<li><strong>首先必须要声明的一点就是逻辑回归是一个受工业商业热爱，使用广泛的模型</strong>     <ul>
+<li><strong>1.逻辑回归对线性关系（特征与标签之间的线性关系极强的数据）的拟合效果好到丧心病狂，比如金融领域中的信用卡欺诈，评分卡制作，电商中的营销预测等等相关的数据，都是逻辑回归的强项。相对，逻辑回归在非线性数据中的效果有时候比瞎猜还不如，如果你事先知道你的数据之间的联系是非线性的，千万一定不要使用逻辑回归！！！</strong><ul>
+<li><strong>其实最简单判别一个模型是否为线性的，只需要判别决策边界是否是直线，也就是是否能用一条直线来划分</strong>  </li>
+</ul>
+</li>
+<li><strong>2.逻辑回归计算快:对于线性数据，逻辑回归的拟合和计算都非常快，计算效率优于SVM和随机森林，亲测表示在大型数据上尤其能看出区别。</strong></li>
+<li><strong>3.逻辑回归返回的分类结果不是固定的0，1，而是以小数形式呈现的类概率数字:我们因此可以把逻辑回归返回的结果当成连续型数据来利用。比如在评分卡制作时，我们不仅需要判断客户是否会违约，还需要给出确定的”信用分“，而这个信用分的计算就需要使用类概率计算出的对数几率（概率）。</strong></li>
+</ul>
+</li>
+<li><strong>总结：我们已经了解了逻辑回归的本质，它是一个返回对数几率的在线性数据上表现优异的分类器，它主要被应用在金融领域。注意，虽然我们熟悉的逻辑回归通常被用于处理二分类问题，但逻辑回归也可以做多分类。</strong></li>
+</ul>
+</li>
+<li><p><strong>逻辑回归的损失函数</strong></p>
+<ul>
+<li><strong>在逻辑回归分类的时候，不管原始样本中的类别使用怎样的值或者文字表示，逻辑回归统一将其视为0类别和1类别。因为逻辑回归也采用了寻找特征和目标之间的某种关系，则每个特征也是有权重的就是w，那么也会存在真实值和预测值之间的误差（损失函数），那么逻辑回归的损失函数和线性回归的损失函数是否一样呢？由于逻辑回归是用于分类的，因此该损失函数和线性回归的损失函数是不一样的！逻辑回归采用的损失函数是：对数似然损失函数：</strong>  </li>
+<li><strong>注意：没有求解参数需求的模型是没有损失函数的，比如KNN，决策树，一般有求解系数需求就有损失函数。</strong></li>
+<li><strong>损失函数被写作如下：</strong><ul>
+<li><strong>为什么使用-log函数为损失函数，损失函数的本质就是，如果我们预测对了，则没有损失，反之则损失需要变的很大，而-log函数在【0，1】之间正好符合这一点。(-log可以放大损失)</strong></li>
+<li><strong>-log(h)表示分类到正例1的损失</strong></li>
+<li><strong>-log(1-h)表示分类到反例0的损失</strong></li>
+<li>$cost(h_\theta(x),y)=\left{<br>\begin{aligned}</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>log(h_{\theta}(x)) &amp;   &amp;\text{if y=1}\</p>
+</li>
+<li><p>log(1-h_{\theta}(x))&amp;  &amp;\text{if y=0} \<br>\end{aligned}<br>\right.$</p>
+</li>
+<li><p><strong>怎么理解单个的式子呢？这个要根据-log的函数图像来理解</strong><br><img src="https://img-blog.csdnimg.cn/20210426144320748.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>综合完整损失函数</strong></li>
+<li>$$cost(h_\theta(x),y)=\sum\limits_{i=1}^m-y_ilog(h_\theta(x))-(1-y_i)log(1-h_\theta(x))$</li>
+<li><strong>损失函数表征预测值与真实值之间的差异程度，如果预测值与真正值越接近则损失函数应该越小</strong></li>
+<li><strong>损失函数解释</strong><ul>
+<li><strong>-yilog(h)表示分类到真实标签正例的损失，根据-log函数得知如果分类正确则损失值小，反之损失大。</strong></li>
+<li><strong>-(1-yi)log(1-h)表示分类到真实标签反例的损失，根据-log函数得知如果分类正确则损失值小，反之损失大。</strong> </li>
+<li><strong>那么两者相加就获得了逻辑回归模型总分类结果的损失！</strong></li>
+</ul>
+</li>
+<li><strong>梯度下降</strong><ul>
+<li><strong>逻辑回归的数学目的是求解能够让模型最优化，拟合程度最好的参数𝛉的值，即求解能够让损失函数J(𝛉)最小化的𝛉值。</strong></li>
+<li><strong>梯度下降原理介绍：</strong><ul>
+<li><strong>假设现在有一个带两个特征并且没有截距的逻辑回归y(x1,x2)，两个特征所对应的参数分别为[𝛉1,𝛉2]。下面这个华丽的平面就是我们的损失函数 J(𝛉1,𝛉2)在以𝛉1,𝛉2和J为坐标轴的三维立体坐标系上的图像。现在，我们寻求的是损失函数的最小值,也就是图像的最低点。</strong><br><img src="https://img-blog.csdnimg.cn/20210426154315180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><ul>
+<li><strong>那我们怎么做呢?我在这个图像上随机放一个小球，当我松手，这个小球就会顺着这个华丽的平面滚落，直到滚到 深蓝色的区域——损失函数的最低点。为了严格监控这个小球的行为，我让小球每次滚动的距离有限，不让他一次性滚到最低点，并且最多只允许它滚动100步，还要记下它每次滚动的方向，直到它滚到图像上的最低点。</strong></li>
+<li><strong>可以看见，小球从高处滑落，在深蓝色的区域中来回震荡，最终停留在了图像凹陷处的某个点上。非常明显，我们可以观察到几个现象:</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>首先，小球并不是一开始就直向着最低点去的，它先一口气冲到了蓝色区域边缘，后来又折回来，我们已经规定了小球是多次滚动，所以可见，小球每次滚动的方向都是不同的。</strong></li>
+<li><strong>另外，小球在进入深蓝色区域后，并没有直接找到某个点，而是在深蓝色区域中来回震荡了数次才停下。这有两种可能:</strong><ul>
+<li><strong>1) 小球已经滚到了图像的最低点，所以停下了，</strong></li>
+<li><strong>2) 由于我设定的步数限制，小球还没有找到最低点，但也只 好在100步的时候停下了。也就是说，小球不一定滚到了图像的最低处。</strong></li>
+</ul>
+</li>
+<li><strong>但无论如何，小球停下的就是我们在现有状况下可以获得的唯一点了。如果我们够幸运，这个点就是图像的最低点，那我们只要找到这个点的对应坐标(𝛉1，𝛉2，J)，就可以获取能够让损失函数最小的参数取值[𝛉1,𝛉2]了。如此，梯度下降的过程就已经完成。</strong></li>
+</ul>
+</li>
+<li><p><strong>在这个过程中，小球其实就是一组组的坐标点(𝛉1，𝛉2，J);小球每次滚动的方向就是那一个坐标点的梯度向量的方 向，因为每滚动一步，小球所在的位置都发生变化，坐标点和坐标点对应的梯度向量都发生了变化，所以每次滚动 的方向也都不一样;人为设置的100次滚动限制，就是sklearn中逻辑回归的参数max_iter，代表着能走的最大步数.</strong> </p>
+<ul>
+<li><strong>所以梯度下降，其实就是在众多[𝛉1,𝛉2]可能的值中遍历，一次次求解坐标点的梯度向量,不断让损失函数的取值J逐渐逼近最小值，再返回这个最小值对应的参数取值[𝛉1,𝛉2]的过程。</strong></li>
+</ul>
+</li>
+<li><p><strong>正则化（过拟合的处理）</strong></p>
+<ul>
+<li><strong>注意：</strong>   <ul>
+<li><strong>由于我们追求损失函数的最小值，让模型在训练集上表现最优，可能会引发另一个问题：如果模型在训练集上表现优秀，在测试集表现糟糕，模型就会过拟合。所以我们还是需要使用控制过拟合的技术来帮助我们调整模型，对逻辑回归中过拟合的控制，使用正则化来实现。</strong></li>
+</ul>
+</li>
+<li><strong>正则化是用来防止模型过拟合的过程，常用的有L1正则化和L2正则化两种选项，分别通过在损失函数后加上参数向量𝛉的L1和L2范式的倍数来实现。这个增加的范式，被称为“正则项”，也被称为“惩罚项”</strong></li>
+<li><strong>L1范式</strong><ul>
+<li><strong>L1范式表现为参数向量𝛉中每个参数的绝对值之和</strong></li>
+<li>$J(\theta)<em>{L1}=J(\theta)+\frac{1}{C}\sum\limits</em>{j=1}^{n}|\theta_j|(j\ge1)$</li>
+</ul>
+</li>
+<li><strong>L2范式</strong><ul>
+<li><strong>L2范式表现为参数向量𝛉中的每个参数的平方和的开方值</strong></li>
+<li>$J(\theta)<em>{L2}=J(\theta)+\frac{1}{C}\sqrt{\sum\limits</em>{j=1}^{n}(\theta_j)^2}(j\ge1)$  </li>
+<li><strong>其中J(𝛉)是我们之前提过的损失函数，C是用来控制正则化程度的超参数(参数C越大返回正则化后的值越小，C越小返回正则化后的值越大)，n是方程中特征的总数，也是方程中参数的总数，j代表每个𝛉参数(w系数)。在这里，j要大于等于1，是因为我们的参数向量中，第一个参数是𝛉0，是我们的截距它通常是不参与正则化的。</strong> </li>
+<li><strong>总结：我们知道损失函数的损失值越小（在训练集中预测值和真实值越接近）则逻辑回归模型就越有可能发生过拟合（模型只在训练集中表现的好，在测试集表现的不好）的现象。通过正则化的L1和L2范式可以加入惩罚项C来矫正模型的拟合度。因为C越小则损失函数会越大表示正则化的效力越强，参数𝛉会被逐渐压缩的越来越小。</strong></li>
+<li><strong>注意：L1正则化会将参数w压缩为0，L2正则化只会让参数尽量小，不会取到0。</strong></li>
+<li><strong>L1和L2范式的区别</strong><ul>
+<li><strong>在L1正则化在逐渐加强的过程中，携带信息量小的、对模型贡献不大的特征的参数w，会比携带大量信息的、对模型有巨大贡献的特征的参数更快地变成0，所以L1正则化本质是一个特征选择的过程。L1正则化越强，参数向量中就越多的参数为0，选出来的特征就越少，以此来防止过拟合。因此，如果特征量很大，数据维度很高，我们会倾向于使用L1正则化。</strong></li>
+<li><strong>L2正则化在加强的过程中，会尽量让每个特征对模型都有一些小的贡献，但携带信息少，对模型贡献不大的特征的参数w会非常接近于0。通常来说，如果我们的主要目的只是为了防止过拟合，选择L2正则化就足够了。但是如果选择L2正则化后还是过拟合，模型在未知数据集上的效果表现很差，就可以考虑L1正则化</strong></li>
+<li><strong>建立两个逻辑回归，L1正则化和L2正则化的差别就一目了然了:</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression <span class="keyword">as</span> LR</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_breast_cancer</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载样本数据</span></span><br><span class="line">data = load_breast_cancer()</span><br><span class="line">x = data.data</span><br><span class="line">y = data.target</span><br><span class="line"><span class="comment"># 建立两种模型</span></span><br><span class="line">lrl1 = LR(penalty=<span class="string">'l1'</span>, C=<span class="number">0.1</span>, solver=<span class="string">'liblinear'</span>, max_iter=<span class="number">100</span>)</span><br><span class="line">lrl2 = LR(penalty=<span class="string">'l2'</span>, C=<span class="number">0.1</span>, solver=<span class="string">'liblinear'</span>, max_iter=<span class="number">100</span>)</span><br><span class="line"><span class="comment"># 逻辑回归的重要属性coef_,查看每个特征对应的系数</span></span><br><span class="line">lrl1.fit(x, y)</span><br><span class="line">print(<span class="string">'L1范式：'</span>, lrl1.coef_)</span><br><span class="line">lrl2.fit(x, y)</span><br><span class="line">print(<span class="string">'L2范式：'</span>, lrl2.coef_)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>逻辑回归API</strong></p>
+<ul>
+<li>*<em>from sklearn.linear_model import LogisticRegression *</em> </li>
+<li><strong>超参数介绍</strong><ul>
+<li><strong>penalty：可以输入l1或l2来指定使用哪一种正则化方式。不填写默认“l2。注意若选择“l1”正则化，参数solver仅能够使用求解方式“liblinear”和“saga”。若使用“l2”正则化，参数solver中所有的求解方式都可以使用。</strong> </li>
+<li><strong>C：惩罚项。必须是一个大于0的浮点数，不填写默认1.0，则默认正则项与损失函数比值是1:1。C越小，损失函数会越大，模型对损失函数的惩罚越严重，正则化的效力越强，参数会被逐渐压缩的越小。</strong></li>
+<li><strong>max_iter：梯度下降中能走的最大步数，默认为100.步数的不同取值可以帮我们获取不同的损失函数的损失值。目前没有好的办法可以计算出最优的max_iter值，一般是绘制学习曲线对其进行取值。</strong></li>
+<li><strong>solver：我们之前提到的梯度下降法，只是求逻辑回归参数θ的一种方法。sklearn为我们提供了多种选择，让我们可以使用不同的求解器来计算逻辑回归。求解器的选择，由参数solver控制，共有5种选择。</strong><ul>
+<li><strong>liblinear：是二分类专用（梯度下降），也是选择默认的求解器。</strong></li>
+<li><strong>lbfgs，newton-cg，sag，saga：是多分类专用，几乎不用</strong><br><img src="https://img-blog.csdnimg.cn/20210428104908263.png" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+<li><strong>multi_class(告知模型处理的是二分类还是多分类)</strong><ul>
+<li><strong>输入”ovr”, “multinomial”, “auto”来告知模型，我们要处理的分类问题的类型。默认是”auto”。</strong> <ul>
+<li><strong>‘ovr’:表示分类问题是二分类，或让模型使用”一对多”的形式来处理多分类问题。</strong></li>
+<li><strong>‘multinomial’:表示处理多分类问题，这种输入在参数solver是’liblinear’时不可用。</strong> </li>
+<li><strong>“auto”:表示会根据数据的分类情况和其他参数来确定模型要处理的分类问题的类型。比如说，如果数据是二分 类，或者solver的取值为”liblinear”，”auto”会默认选择”ovr”。反之，则会选择”multinomial”。</strong></li>
+</ul>
+</li>
+<li><strong>class_weight (处理标签类别分类不均衡)</strong><ul>
+<li><strong>表示样本不平衡处理的参数。样本不平衡指的是在一组数据中，某一类标签天生占有很大的比例，或误分类的代价很高，即我们想要捕捉出某种特定的分类的时候的状况。什么情况下误分类的代价很高?</strong> <ul>
+<li><strong>例如，我们现在要对潜在犯罪者和普通人进行分类，如果没有能够识别出潜在犯罪者，那么这些人就可能去危害社会，造成犯罪，识别失败的代价会非常高，但如果，我们将普通人错误地识别成了潜在犯罪者，代价却相对较小。所以我们宁愿将普通人分类为潜在犯罪者后再人工甄别，但是却不愿将潜在犯罪者 分类为普通人，有种”宁愿错杀不能放过”的感觉。</strong></li>
+<li><strong>再比如说，在银行要判断“一个新客户是否会违约”，通常不违约的人vs违约的人会是99:1的比例，真正违约的人其实是非常少的。这种分类状况下，即便模型什么也不做，全把所有人都当成不会违约的人，正确率也能有99%， 这使得模型评估指标变得毫无意义，根本无法达到我们的“要识别出会违约的人”的建模目的。</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>None：</strong><ul>
+<li><strong>因此我们要使用参数class_weight对样本标签进行一定的均衡，给少量的标签更多的权重，让模型更偏向少数类， 向捕获少数类的方向建模。该参数默认None，此模式表示自动给与数据集中的所有标签相同的权重，即自动1: 1。</strong> </li>
+</ul>
+</li>
+<li><strong>balanced</strong><ul>
+<li><strong>当误分类的代价很高的时候，我们使用”balanced“模式，可以解决样本不均衡问题。</strong>  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression <span class="keyword">as</span> LR</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_breast_cancer</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载样本数据</span></span><br><span class="line">data = load_breast_cancer()</span><br><span class="line">x = data.data</span><br><span class="line">y = data.target</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">l2 = []</span><br><span class="line">l2_test = []</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=<span class="number">0.3</span>, random_state=<span class="number">420</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> np.arange(<span class="number">1</span>, <span class="number">201</span>, <span class="number">10</span>):</span><br><span class="line">    lrl2 = LR(penalty=<span class="string">'l2'</span>, solver=<span class="string">'liblinear'</span>, C=<span class="number">0.9</span>, max_iter=i)</span><br><span class="line">    lrl2.fit(x_train, y_train)</span><br><span class="line">    l2.append(accuracy_score(lrl2.predict(x_train), y_train))</span><br><span class="line">    l2_test.append(accuracy_score(lrl2.predict(x_test), y_test))</span><br><span class="line">graph = [l2, l2_test]</span><br><span class="line">color = [<span class="string">"black"</span>, <span class="string">"red"</span>]</span><br><span class="line">label = [<span class="string">"L2train"</span>, <span class="string">"L2test"</span>]</span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">10</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(graph)):</span><br><span class="line">    plt.plot(np.arange(<span class="number">1</span>, <span class="number">201</span>, <span class="number">10</span>), graph[i], color[i], label=label[i])</span><br><span class="line">plt.legend(loc=<span class="number">4</span>)</span><br><span class="line">plt.xticks(np.arange(<span class="number">1</span>, <span class="number">201</span>, <span class="number">10</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h3 id="WOE-amp-IV编码-amp-分箱"><a href="#WOE-amp-IV编码-amp-分箱" class="headerlink" title="WOE&amp;IV编码&amp;分箱"></a>WOE&amp;IV编码&amp;分箱</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>概述</strong></p>
+<ul>
+<li><strong>IV和WOE通常是用在对模型的特征筛选的场景中，在模型刚建立时，选择的变量往往比较多，这个时候就需要一种方法来帮助我们衡量什么变量应该进入模型什么变量应该舍弃。IV和WOE就可以帮助我们进行衡量。用IV和WOE值来进行判断，值越大就表示该特征的预测能力越强，则该特征应该加入到模型的训练中。</strong></li>
+</ul>
+</li>
+<li><p><strong>应用</strong></p>
+<ul>
+<li><strong>1.变量筛选。我们选取比较重要的变量加入模型，预测强度可以作为我们判断变量是否重要的一个依据。</strong></li>
+<li><strong>2.指导变量离散化。在建模过程中，时常需要对连续变量进行离散化处理，如将年龄进行分段。但是变量不同的离散化结果（如年龄分为[0-15还是[0-20]]）会对模型产生不同的影响。因此，可以根据指标所反应的预测强度，调整变量离散化结果。（对一些取值很多的分类变量，在需要时也可以对其进行再分组，实现降维）</strong></li>
+</ul>
+</li>
+<li><p><strong>计算方法</strong>    </p>
+<ul>
+<li><strong>WOE</strong><ul>
+<li><strong>WOE的全称是“Weight of Evidence”，即证据权重。WOE是对原始特征的一种编码形式。要对一个特征进行WOE编码，需要首先把这个变量进行分组处理（也叫离散化、分箱等等，将一个连续型变量离散化）。分组后，对于第i组，WOE的计算公式如下：</strong>  </li>
+<li>$WOE_i=ln\frac{py_i}{pn_i}=ln\frac{\frac{\eta y_i}{\eta y_T}}{\frac{\eta n_i}{\eta n_T}}$</li>
+<li><strong>其中，pyi是这个组中正例样本占整个样本中正例样本的比例，pni是这个组中负例样本占整个样本中负例样本的比例，ηyi是这个组中正例样本的数量，ηni是这个组中负例样本的数量，ηyT是整个样本中所有正例样本的数量，ηnT是整个样本中所有负例样本的数量。</strong></li>
+<li><strong>从这个公式中我们可以体会到，WOE表示的实际上是“当前分组中正例样本占所有样本中所有正例样本的比例”和“当前分组中负例样本占所有样本中所有负例样本比例”的差异。</strong></li>
+</ul>
+</li>
+<li><strong>IV</strong><ul>
+<li><strong>对于一个分组后的变量对应的IV值，计算公式如下：</strong></li>
+<li>$IV_i=(py_i-pn_i)<em>WOE_i=(py_i-pn_i)</em>ln\frac{py_i}{pn_i}=(\frac{\eta y_i}{\eta y_T}-\frac{\eta n_i}{\eta n_T})*ln\frac{\frac{\eta y_i}{\eta y_T}}{\frac{\eta n_i}{\eta n_T}}$</li>
+<li><strong>有了一个特征各分组的IV值，我们就可以计算整个特征的IV值，方法很简单，就是把各分组的IV相加：其中n就是分组的个数</strong></li>
+<li>$IV=\sum\limits_{i}^nIV_i$</li>
+</ul>
+</li>
+<li><strong>用实例介绍IV的计算和使用</strong><ul>
+<li>例子：假设现在某个公司举行一个活动，在举行这个活动之前，先在小范围的客户中进行了一次试点，收集了一些用户对这次活动的一些响应，然后希望通过这些数据，去构造一个模型，预测如果举行这次的活动，是否能够得到很好的响应或者得到客户的响应概率之类。<br>假设我们已经从公司客户列表中随机抽取了100000个客户进行了营销活动测试，收集了这些客户的响应结果，作为我们的建模数据集，其中响应的客户有10000个。另外假设我们也已经提取到了这些客户的一些变量，作为我们模型的候选变量集，这些变量包括以下这些:<br>最近一个月是否有购买；<br>最近一次购买金额；<br>最近一笔购买的商品类别；<br>是否是公司VIP客户；<br>假设，我们已经对这些变量进行了离散化，统计的结果如下面几张表所示。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>(1) 最近一个月是否有过购买：</p>
+<table>
+<thead>
+<tr>
+<th align="center">最近一个月是否有过购买</th>
+<th align="center">响应</th>
+<th align="center">未响应</th>
+<th align="center">合计</th>
+<th align="center">响应比例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">是</td>
+<td align="center">4000</td>
+<td align="center">16000</td>
+<td align="center">20000</td>
+<td align="center">20%</td>
+</tr>
+<tr>
+<td align="center">否</td>
+<td align="center">6000</td>
+<td align="center">74000</td>
+<td align="center">80000</td>
+<td align="center">7.5%</td>
+</tr>
+<tr>
+<td align="center">合计</td>
+<td align="center">10000</td>
+<td align="center">90000</td>
+<td align="center">100000</td>
+<td align="center">10%</td>
+</tr>
+</tbody></table>
+<p>(2) 最近一次购买金额：<br>| 最近一次购买金额 | 响应 |未响应|合计|响应比例|<br>|:——–:| :———–:|:———–:|:———–:|:———–:|<br>|&lt;100|2500|47500|50000|5%|<br>|[100,200)|3000|27000|30000|10%|<br>|[200,500)|3000|12000|15000|20%|<br>|&gt;=500|1500|3500|5000|30%|<br>|合计|10000|90000|100000|10%|<br>(3) 最近一笔购买的商品类别：<br><img src="https://img-blog.csdnimg.cn/20210429110246779.png" alt="在这里插入图片描述"><br>(4) 是否是公司VIP客户：<br><img src="https://img-blog.csdnimg.cn/2021042911031614.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>计算WOE和IV</strong><ul>
+<li>我们以其中的一个变量“最近一次购买金额”变量为例：</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">最近一次购买金额</th>
+<th align="center">响应</th>
+<th align="center">未响应</th>
+<th align="center">合计</th>
+<th align="center">响应比例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&lt;100</td>
+<td align="center">2500</td>
+<td align="center">47500</td>
+<td align="center">50000</td>
+<td align="center">5%</td>
+</tr>
+<tr>
+<td align="center">[100,200)</td>
+<td align="center">3000</td>
+<td align="center">27000</td>
+<td align="center">30000</td>
+<td align="center">10%</td>
+</tr>
+<tr>
+<td align="center">[200,500)</td>
+<td align="center">3000</td>
+<td align="center">12000</td>
+<td align="center">15000</td>
+<td align="center">20%</td>
+</tr>
+<tr>
+<td align="center">&gt;=500</td>
+<td align="center">1500</td>
+<td align="center">3500</td>
+<td align="center">5000</td>
+<td align="center">30%</td>
+</tr>
+<tr>
+<td align="center">合计</td>
+<td align="center">10000</td>
+<td align="center">90000</td>
+<td align="center">100000</td>
+<td align="center">10%</td>
+</tr>
+<tr>
+<td align="center">&lt;100元：$WOE_1=ln\frac{\frac{2500}{10000}}{\frac{47500}{90000}}=-0.74721$</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">[100,200):$WOE_2=ln\frac{\frac{3000}{10000}}{\frac{27000}{90000}}=0$</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">[200,500):$WOE_3=ln\frac{\frac{3000}{12000}}{\frac{10000}{90000}}=0.81093$</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">$&gt;=500:WOE_4=ln\frac{\frac{1500}{3500}}{\frac{10000}{90000}}=1.349927$</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 我们把这个变量离散化为了4个分段：&lt;100元，[100,200)，[200,500)，&gt;=500元。首先，根据WOE计算公式，这四个分段的WOE分别为：</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><img src="https://img-blog.csdnimg.cn/20210429112528841.png" alt="在这里插入图片描述"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 从上面的计算结果中我们可以看一下WOE的基本特点：</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 当前分组中，响应的比例越大，WOE值越大；</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 当前分组WOE的正负，由当前分组响应和未响应的比例，与样本整体响应和未响应的比例的大小关系决定，当前分组的比例小于样本整体比例时（分子小于分母），WOE为负，当前分组的比例大于整体比例时（分子大于分母），WOE为正，当前分组的比例和整体比例相等时（分子等于分母），WOE为0。</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- <strong>我们进一步理解一下WOE，会发现，WOE其实描述了某一特征的当前这个分组，对判断该特征是否会响应（或者说属于哪个类）所起到影响方向和大小，当WOE为正时，特征当前取值对判断个体是否会响应起到的正向的影响，当WOE为负时，起到了负向影响。而WOE值的大小，则是这个影响的大小的体现。</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- <strong>分别计算四个分组的IV值：</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">&lt;100元：$WOE_1=(\frac{2500}{10000}-\frac{47500}{90000})*ln\frac{\frac{2500}{10000}}{\frac{47500}{90000}}=0.20756$</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">[100,200):$WOE_2=(\frac{3000}{10000}-\frac{27000}{90000})*ln\frac{\frac{3000}{10000}}{\frac{27000}{90000}}=0$</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">[200,500):$WOE_3=(\frac{3000}{10000}-\frac{12000}{90000})*ln\frac{\frac{3000}{12000}}{\frac{10000}{90000}}=0.135155$</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">$&gt;=500:WOE_4=(\frac{1500}{10000}-\frac{3500}{90000})*ln\frac{\frac{1500}{3500}}{\frac{10000}{90000}}=0.149992$</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- <strong>从上面IV的计算结果我们可以看出IV的以下特点：</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- <strong>对于特征的一个分组，这个分组的响应和未响应的比例与样本整体响应和未响应的比例（WOE）相差越大，IV值越大，否则，IV值越小；</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- <strong>极端情况下，当前分组的响应和未响应的比例和样本整体的响应和未响应的比例相等时，IV值为0；</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 我们计算变量总IV值</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">$IV=IV_1+IV_2+IV_3+IV_4=0.492706$</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- IV值的比较和变量预测能力的排序</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 四个特征的IV值结果如下：</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 最近一次购买金额的IV值：0.49270645</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 最近一个月是否有购买的IV值：0.250224725</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 最近一笔购买的商品类别的IV值：0.615275563</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 是否是公司VIP客户的IV值：1.56550367</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 这四个特征IV排序结果是这样的：是否是公司VIP客户 &gt; 最近一笔购买的商品类别 &gt; 最近一次购买金额 &gt; 最近一个月是否有过购买。我们发现“是否是公司VIP客户”是预测能力最高的特征，“最近一个月是否有过购买”是预测能力最低的特征。如果我们需要在这四个变量中去挑选特征，就可以根据IV从高到低去挑选了。</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- <strong>关于IV和WOE的进一步思考：为什么用IV而不是直接用WOE？</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- <strong>从上面的内容来看，特征各分组的WOE和IV都隐含着这个分组对目标变量的预测能力这样的意义。那我们为什么不直接用WOE相加或者绝对值相加作为衡量一个变量整体预测能力的指标呢？并且，从计算公式来看，对于特征的一个分组，IV是WOE乘以这个分组响应占比和未响应占比的差。而一个特征的IV等于各分组IV的和。如果愿意，我们同样也能用WOE构造出一个这样的一个和出来，我们只需要把特征各个分组的WOE和取绝对值再相加，（取绝对值是因为WOE可正可负，如果不取绝对值，则会把特征的区分度通过正负抵消的方式抵消掉）：</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- $WOE=\sum\limits_{i}^{n}</td>
+<td align="center">WOE_i</td>
+<td align="center">$，其中，n为变量分组个数</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-  <strong>那么我们为什么不直接用这个WOE绝对值的加和来衡量一个变量整体预测能力的好坏，而是要用WOE处理后的IV呢。</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- <strong>我们这里给出两个原因。IV和WOE的差别在于IV在WOE基础上乘以的那个（py-pn），我们暂且用pyn来代表这个值。</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- <strong>第一个原因，当我们衡量一个特征的预测能力时，我们所使用的指标值不应该是负数，否则，说一个特征的预测能力的指标是-2.3，听起来很别扭。从这个角度讲，乘以pyn这个系数，保证了特征每个分组的结果都是非负数，你可以验证一下，当一个分组的WOE是正数时，pyn也是正数，当一个分组的WOE是负数时，pyn也是负数，而当一个分组的WOE=0时，pyn也是0。</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- <strong>更主要的原因，也就是第二个原因是，乘以pyn后，体现出了特征当前分组中个体的数量占整体个体数量的比例，对变量预测能力的影响。怎么理解这句话呢？我们还是举个例子。</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 假设我们上面所说的营销响应模型中，还有一个特征A，其取值只有两个：0,1，将特征A分成两组0和1。数据如下：</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">响应</th>
+<th align="center">未响应</th>
+<th align="center">合计</th>
+<th align="center">响应比例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">90</td>
+<td align="center">10</td>
+<td align="center">100</td>
+<td align="center">90%</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">9910</td>
+<td align="center">89990</td>
+<td align="center">99900</td>
+<td align="center">10%</td>
+</tr>
+<tr>
+<td align="center">合计</td>
+<td align="center">10000</td>
+<td align="center">90000</td>
+<td align="center">100000</td>
+<td align="center">10%</td>
+</tr>
+</tbody></table>
+<ul>
+<li>我们从上表可以看出，当特征A取值1时，其响应比例达到了90%，非常的高，但是我们能否说特征A的预测能力非常强呢？不能。为什么呢？原因就在于，A取1时，响应比例虽然很高，但这个分组的客户数太少了，占的比例太低了。虽然，如果一个客户在A这个特征上取1，那他有90%的响应可能性，但是一个客户特征A取1的可能性本身就非常的低。所以，对于样本整体来说，变量的预测能力并没有那么强。我们分别看一下变量各分组和整体的WOE，IV。<br><img src="https://img-blog.csdnimg.cn/20210506151648453.png" alt="在这里插入图片描述"><ul>
+<li>从这个表我们可以看到，特征取1时，响应比达到90%，对应的WOE很高，但对应的IV却很低，原因就在于IV在WOE的前面乘以了一个系数（py-pn），而这个系数很好的考虑了这个分组中样本占整体样本的比例，比例越低，这个分组对特征整体预测能力的贡献越低。相反，如果直接用WOE的绝对值加和，会得到一个很高的指标，这是不合理的。<ul>
+<li><strong>分箱</strong></li>
+</ul>
+</li>
+<li><strong>数据分箱（也称为离散分箱或分段）是一种数据预处理技术，用于减少次要观察误差的影响，是一种将多个连续值分组为较少数量的“分箱”的方法。说白了就是将连续型特征进行离散化。</strong>  </li>
+<li><strong>注意</strong><ul>
+<li><strong>分箱的数据不一定必须是数字，它们可以是任何类型的值，如“狗”，“猫”，“仓鼠”等。 分箱也用于图像处理，通过将相邻像素组合成单个像素，它可用于减少数据量。</strong></li>
+</ul>
+</li>
+<li><strong>分箱的作用&amp;意义</strong><ul>
+<li><strong>离散特征的增加和减少都很容易，易于模型的快速迭代，提升计算速度</strong></li>
+<li><strong>特征离散化后，模型会更稳定，比如如果对用户年龄离散化，20-30作为一个区间，不会因为一个用户年龄长了一岁就变成一个完全不同的人。</strong></li>
+<li><strong>特征离散化以后，起到了简化了模型的作用，可以适当降低了模型过拟合的风险。</strong> </li>
+<li><strong>pandas实现数据的分箱：pd.cut()</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series, DataFrame</span><br><span class="line"></span><br><span class="line">score_list = np.random.randint(<span class="number">30</span>, <span class="number">100</span>, size=<span class="number">20</span>)</span><br><span class="line">print(score_list)</span><br><span class="line"><span class="comment"># 设置分箱：方式1</span></span><br><span class="line">bins = [<span class="number">0</span>, <span class="number">59</span>, <span class="number">70</span>, <span class="number">80</span>, <span class="number">100</span>]  <span class="comment"># 指定分箱数据的范围</span></span><br><span class="line">score_cat = pd.cut(score_list, bins)</span><br><span class="line">print(score_cat)</span><br><span class="line">print(pd.value_counts(score_cat))</span><br><span class="line"><span class="comment"># 设置分箱：方式2</span></span><br><span class="line">bins1 = <span class="number">3</span>  <span class="comment"># 指定分箱数据的范围的个数</span></span><br><span class="line">score_cat1 = pd.cut(score_list, bins1)</span><br><span class="line">print(score_cat1)</span><br><span class="line">print(pd.value_counts(score_cat1))</span><br><span class="line"><span class="comment"># label参数的作用：设置分箱每一个范围的标识</span></span><br><span class="line">bins2 = <span class="number">3</span>  <span class="comment"># 指定分箱数据的范围的个数</span></span><br><span class="line">score_cat2 = pd.cut(score_list, bins2, labels=range(<span class="number">3</span>))</span><br><span class="line">print(score_cat2.tolist())</span><br><span class="line">print(pd.value_counts(score_cat2))</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>注意：我们对特征分箱后，需要对分箱的每组进行woe编码，然后才能进行模型训练</strong></li>
+<li><strong>pandas实现数据的分箱：pd.qcut() 等频分箱</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series, DataFrame</span><br><span class="line"></span><br><span class="line"><span class="comment"># qcut是根据这些值的频率来选择箱子的均匀间隔，即每个箱子中含有的数量是相同的</span></span><br><span class="line">factors = np.random.randn(<span class="number">9</span>)</span><br><span class="line">print(pd.qcut(factors, <span class="number">3</span>))  <span class="comment"># 返回每个数对应的分组</span></span><br><span class="line">print(pd.qcut(factors, <span class="number">3</span>).value_counts())  <span class="comment"># 计算每个分组中含有的数的数量</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>cut与qcut的区别：</strong></li>
+<li>cut:按连续数据的大小分到各个桶里，每个桶里样本量可能不同，但是，每个桶相当于一个等长的区间，即：以数据的最大和最小为边界，等份成n个桶。</li>
+<li>qcut:与cut主要的区别就是每个桶里的样本数量是一定的</li>
+<li>经验：在使用中，如果特征是连续的倾向于使用qcut，离散型的倾向于用cut</li>
+<li><strong>分箱后求解IV和WOE的值</strong></li>
+<li><strong>注意：分箱后就可以求解出IV和WOE的值了。如果想对连续性特征进行离散化，需要对分箱后的每组（箱）数据进行woe或者iv编码，然后才能放进模型训练。</strong>  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sklearn.datasets <span class="keyword">as</span> ds</span><br><span class="line"></span><br><span class="line">bc = ds.load_breast_cancer()</span><br><span class="line">feature = bc.data</span><br><span class="line">target = bc.target</span><br><span class="line"><span class="comment"># 查看第1列数据范围，判定其为连续性数据</span></span><br><span class="line">print(feature[:, <span class="number">1</span>])</span><br><span class="line">print(feature[:, <span class="number">1</span>].min())</span><br><span class="line">print(feature[:, <span class="number">1</span>].max())</span><br><span class="line"><span class="comment"># 对其进行分箱处理，将其离散化</span></span><br><span class="line">fea_bins = pd.cut(feature[:, <span class="number">1</span>], bins=<span class="number">5</span>, labels=range(<span class="number">5</span>))</span><br><span class="line">print(fea_bins.value_counts())</span><br><span class="line"><span class="comment"># 对分箱后的特征列进行woe编码</span></span><br><span class="line"><span class="comment"># print(target)</span></span><br><span class="line">gi = pd.crosstab(fea_bins, target)  <span class="comment"># 使用交叉表进行woe编码</span></span><br><span class="line">print(gi)</span><br><span class="line">gb = pd.Series(data=target).value_counts()</span><br><span class="line">print(gb)</span><br><span class="line">gbi = (gi[<span class="number">1</span>] / gi[<span class="number">0</span>]) / (gb[<span class="number">1</span>] / gb[<span class="number">0</span>])</span><br><span class="line">print(gbi)</span><br><span class="line">woe = np.log(gbi)</span><br><span class="line">print(woe)</span><br><span class="line"><span class="comment"># 进行映射操作</span></span><br><span class="line">dict = woe.to_dict()</span><br><span class="line">print(dict)</span><br><span class="line">woe_bins = fea_bins.map(dict)</span><br><span class="line">print(woe_bins.tolist())</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>样本类别分布不均衡处理</strong><ul>
+<li><strong>什么是样本类别分布不均衡？</strong><ul>
+<li><strong>举例说明，在一组样本中不同类别的样本量差异非常大，比如拥有1000条数据样本的数据集中，有一类样本的分类只占有10条，此时属于严重的数据样本分布不均衡。</strong>  </li>
+</ul>
+</li>
+<li><strong>样本类别分布不均衡导致的危害</strong><ul>
+<li><strong>样本类别不均衡将导致样本量少的分类所包含的特征过少，并很难从中提取规律；即使得到分类模型，也容易产生过度依赖与有限的样本数据而导致过拟合问题，当模型应用到新数据，模型的准确性会很差。</strong></li>
+</ul>
+</li>
+<li><strong>解决办法：</strong><ul>
+<li><strong>通过过抽样和欠抽样解决样本不均衡</strong><ul>
+<li>也可以叫做上采样，和下采样    </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>过抽样（over-sampling）</strong><ul>
+<li><strong>from imblearn.over_sampling import SMOTE</strong></li>
+<li><strong>通过增加分类中少数类样本的数量来实现样本均衡，比较好的方法有SMOTE算法。</strong> </li>
+<li><strong>SMOTE算法原理介绍</strong><ul>
+<li><strong>简单来说smote算法的思想是合成新的少数类样本，合成的策略是对每个少数类样本a，从它的最近邻中随机选一个样本b，然后在a、b之间的连线上随机选一点作为新合成的少数类样本。</strong> </li>
+<li>参数：k_neighbors，找出类别少的样本点周围最近的k个邻居<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> SMOTE</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据源产生</span></span><br><span class="line">x = np.random.randint(<span class="number">0</span>, <span class="number">100</span>, size=(<span class="number">100</span>, <span class="number">3</span>))</span><br><span class="line">print(x)</span><br><span class="line">y = pd.Series(data=np.random.randint(<span class="number">0</span>, <span class="number">1</span>, size=(<span class="number">95</span>,)))</span><br><span class="line">print(y)</span><br><span class="line">y = y.append(pd.Series(data=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]), ignore_index=<span class="literal">False</span>).values</span><br><span class="line">print(y)</span><br><span class="line">y = y.reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">all_data_np = np.concatenate((x, y), axis=<span class="number">1</span>)</span><br><span class="line">np.random.shuffle(all_data_np)</span><br><span class="line">df = pd.DataFrame(all_data_np)</span><br><span class="line">print(df)</span><br><span class="line"><span class="comment"># 样本数据提取</span></span><br><span class="line">feature = df[[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]]</span><br><span class="line">target = df[<span class="number">3</span>]</span><br><span class="line">print(target.value_counts())</span><br><span class="line">s = SMOTE(k_neighbors=<span class="number">3</span>)  <span class="comment"># 实例化算法对象</span></span><br><span class="line">s_feature, s_target = s.fit_resample(feature, target)  <span class="comment"># 合成新的样本数据</span></span><br><span class="line">print(s_target.value_counts())</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>欠抽样（under-sampling）</strong><ul>
+<li><strong>通过减少分类中多数类样本的数量来实现样本均衡（可能造成样本数据大量丢失）</strong></li>
+<li><strong>from imblearn.under_sampling import RandomUnderSampler</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> imblearn.under_sampling <span class="keyword">import</span> RandomUnderSampler</span><br><span class="line"></span><br><span class="line">r = RandomUnderSampler()</span><br><span class="line">r_feature, r_target = r.fit_resample(feature, target)</span><br><span class="line">print(r_target.value_counts())</span><br><span class="line">print(r_feature.shape)</span><br></pre></td></tr></table></figure>
+<h3 id="分类模型的评价指标"><a href="#分类模型的评价指标" class="headerlink" title="分类模型的评价指标"></a>分类模型的评价指标</h3><ul>
+<li>问题：如何评判两部手机的好坏？</li>
+</ul>
+1.根据性能评价<br>2.根据外观评价<br>3.根据价格评价<ul>
+<li>分析：如果对一个事物进行好坏的评价，首先我们一定是在指定场景下，使用符合该场景相关的评价标准对其进行好坏的评价！那么归于分类模型的评价有如下几种方式：<br>准确率<br>精准率<br>召回率<br>f1-Score<br>auc</li>
+<li>在介绍每种评价指标之前，首先我们来看一个叫做混淆矩阵的东西：</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>预测结果<br>|  | 正例|反例|<br>|:——–:| :———:|:———–:|<br>|正例|真正例TP |伪反例FN|<br>|反例|伪正例FP|真反例TN|</p>
+<ul>
+<li><strong>混淆矩阵</strong><ul>
+<li><strong>概念：在分类任务下，预测结果和真实结果之间存在四种不同的组合。适用于二分类和多分类。</strong></li>
+<li><strong>真正例率TPR = TP / (TP + FN)：预测对的比例,TPR越大越好</strong><ul>
+<li><strong>预测为正例且实际为正例样本占所有训练集中正例样本的比例</strong></li>
+<li><strong>将正例预测对的占正样本的比例（预测对的比例），这个比例越大越好</strong></li>
+</ul>
+</li>
+<li><strong>伪反例率FPR = FP / (FP + TN)：预测错的比例,FPR越小越好</strong> <ul>
+<li><strong>预测为正例但实际为负例的样本占训练集中所有负例样本的比例</strong> </li>
+<li><strong>将负例预测错的占负样本的比例（预测错的比例），这个比例越小越好</strong></li>
+<li><strong>注意：如果有其他的类别，其他的每一个类别也有其对应的混淆矩阵表示真伪正例和真伪反例的比例</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>准确率</strong><ul>
+<li><strong>Accuracy = (TP+TN)/(TP+FN+FP+TN)</strong>  </li>
+<li><strong>解释：(预测正确)/(预测对的和不对的所有结果)，简而言之就是预测正确的比例。</strong></li>
+<li><strong>模型.score()方法返回的就是模型的准确率</strong></li>
+</ul>
+</li>
+<li><strong>召唤率（较多被使用）</strong> <ul>
+<li><strong>Recal = TP/(TP+FN)</strong> </li>
+<li><strong>解释：真正为正例的样本中预测结果为正例的比例。正样本有多少被找出来了（召回了多少）</strong></li>
+<li><strong>API:recall_score</strong></li>
+</ul>
+</li>
+<li><strong>精确率</strong><ul>
+<li><strong>Precision = TP/(TP+FP)</strong>  </li>
+<li><strong>解释：预测结果为正例样本（TP+FP）中真实值为正例（TP）的比例。</strong></li>
+<li><strong>API:accuracy_score</strong></li>
+</ul>
+</li>
+<li><strong>f1-score：精确率和召回率的调和平均数</strong><br><img src="https://img-blog.csdnimg.cn/20210511155959969.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><ul>
+<li><strong>有时候我们需要综合精确率和召回率的指标，则需要使用f1-score</strong></li>
+<li><strong>模型的精确率和召回率是有矛盾的，而F1分数（F1-score）是分类问题的一个衡量指标。一些多分类问题的机器学习竞赛，常常将F1-score作为最终测评的方法。它是精确率和召回率的调和平均数，最大为1，最小为0。</strong></li>
+<li>f1_score=$\frac{1}{\frac{1}{recall}+\frac{1}{pre}}=\frac{2<em>pre</em>recall}{pre+recall}$</li>
+<li><strong>反应了模型的稳健性</strong></li>
+<li><strong>它是精确率和召回率的调和平均数</strong></li>
+<li><strong>是一个综合的评判标准</strong></li>
+<li><strong>API：f1_score</strong></li>
+</ul>
+</li>
+<li><strong>AUC曲线</strong><ul>
+<li><strong>AUC是一个模型评价指标，只能用于二分类模型的评价。该评价指标通常应用的比较多！</strong></li>
+<li><strong>应用的比较多是原因是因为很多的机器学习的分类模型计算结果都是概率的形式（比如逻辑回归），那么对于概率而言，我们就需要去设定一个阈值来判定分类，那么这个阈值的设定就会对我们的正确率和准确率造成一定程度的影响。</strong><ul>
+<li><strong>逻辑回归的默认阈值为0.5</strong></li>
+</ul>
+</li>
+<li><strong>AUC(Area under Curve)，表面上意思是曲线下边的面积，这么这条曲线是什么？</strong><ul>
+<li><strong>ROC曲线（receiver operating characteristic curve，接收者操作特征曲线）</strong><br><img src="https://img-blog.csdnimg.cn/20210511163538801.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+<li><strong>在理想情况下，最佳的分类器应该尽可能地处于左上角，这就意味着分类器在伪反例率（预测错的概率）很低的同时获得了很高的真正例率（预测对的概率）。也就是说ROC曲线围起来的面积越大越好，因为ROC曲线面积越大，则曲线上面的面积越小，则分类器越能停留在ROC曲线的左上角。</strong></li>
+<li><strong>AUC的的取值是固定在0-1之间。AUC的值越大越好。</strong><ul>
+<li><strong>AUC的API</strong><ul>
+<li><strong>from sklearn.metrics import roc_auc_score<br>y_pre = predict_proba(x_test)返回预测的概率<br>auc=roc_auc_score(y_test,y_pre[:,1])</strong><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets <span class="keyword">as</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score, f1_score, recall_score, roc_auc_score</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">feature = iris.data</span><br><span class="line">target = iris.target</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(feature, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">2020</span>)</span><br><span class="line">lr = LogisticRegression()</span><br><span class="line">lr.fit(x_train, y_train)</span><br><span class="line"><span class="comment"># 准确率</span></span><br><span class="line">print(lr.score(x_test, y_test))</span><br><span class="line">y_pred = lr.predict(x_test)</span><br><span class="line"><span class="comment"># 精准率</span></span><br><span class="line">print(accuracy_score(y_test, y_pred))</span><br><span class="line"><span class="comment"># 召回率</span></span><br><span class="line"><span class="comment"># 参数average='binary'为默认值，只针对二分类，需要作修改</span></span><br><span class="line">print(recall_score(y_test, y_pred, average=<span class="string">'macro'</span>))</span><br><span class="line"><span class="comment"># f1-Score</span></span><br><span class="line"><span class="comment"># 参数average='binary'为默认值，只针对二分类，需要作修改</span></span><br><span class="line">print(f1_score(y_test, y_pred, average=<span class="string">'macro'</span>))</span><br><span class="line"><span class="comment"># AUC 只能用于二分类</span></span><br><span class="line"><span class="comment"># 参数y_score是分到某一类别的概率</span></span><br><span class="line">print(lr.predict_proba(x_test)[:, <span class="number">1</span>])</span><br><span class="line"><span class="comment"># print(roc_auc_score(y_test, lr.predict_proba(x_test)[:1])) 这里报错是因为我们把AUC作用于了多分类</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>决策树</strong><ul>
+<li><strong>认识决策树</strong> <ul>
+<li>决策树(Decision Tree)是一种有监督学习方法，它能够从一系列有特征和标签的数据中总结出决策（基于分类或者回归）规则，并用树状图的结构来呈现这些规则，以解决分类和回归问题。决策树算法容易理解，适用各种数据，在解决各种问题时都有良好表现，尤其是以树模型为核心的各种集成算法(集成学习的核心操作)，在各个行业领域都有广泛的应用。 </li>
+<li>我们来简单了解一下决策树是如何工作的。决策树算法的本质是一种树结构，我们只需要问一系列问题就可以对数据进行分类了。比如说，来看看下面的一组数据集，这是一些列已知物种以及所属类别的数据：<br><img src="https://img-blog.csdnimg.cn/20210511205658965.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+<li><strong>在这个决策过程中，我们一直在对记录的特征进行提问。最初的问题所在的地方叫做根节点，在得到结论前的每一个问题都是中间节点，而得到的每一个结论(动物的类别)都叫做叶子节点。</strong></li>
+</ul>
+</li>
+<li><strong>节点</strong><ul>
+<li><strong>根节点:没有进边，有出边。包含最初的，针对特征的提问。</strong> </li>
+<li><strong>中间节点:既有进边也有出边，进边只有一条，出边可以有很多条。都是针对特征的提问。</strong></li>
+<li><strong>叶子节点:有进边，没有出边，每个叶子节点都是一个类别标签。</strong></li>
+<li><strong>子节点和父节点:在两个相连的节点中，更接近根节点的是父节点，另一个是子节点。</strong></li>
+<li>相亲案例<br><img src="https://img-blog.csdnimg.cn/20210511210727283.png" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20210511210659394.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzMzc4MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>上述案例中就可以将被相亲对象预测为见或者不见。上述分叉的结构就是决策树，如果一个决策树建立好之后，就可以基于该树的相关分支得到不同分类的预测结果。</li>
+<li>问题：为什么上述决策树中不把收入（特征）作为判断的第一步（作为树的根节点）呢？<ul>
+<li>树的根节点和中间节点对应的是某一种类型特征，那么这些节点（特征）自上而下的重要性应该是由大到小进行排列的。</li>
+<li>因为我们普遍的认为年龄的重要性要大于收入！当然树中的这些节点具有怎样的重要性都是我们根据以往的经验来设定的，其实这样是不精准的，因为经验会有误差，不严谨。那么决策树模型肯定是根据有理有据的科学的方法进行重要性的设定的。那么如何科学设定呢？首先我们得先知道决策树算法主要解决的问题是什么！</li>
+</ul>
+</li>
+<li><strong>决策树算法的核心是要解决两个问题:</strong> <ul>
+<li><strong>1.如何从数据表中找出最佳节点或最佳分枝?</strong> </li>
+<li><strong>2.如何让决策树停止生长，防止过拟合?</strong><ul>
+<li>决策树是基于训练集数据构建出来的，如果树长的越大分支越细致，则对训练数据的描述越清楚，但是不一定会很好的作用到测试数据中。</li>
+</ul>
+</li>
+<li><strong>几乎所有决策树有关的模型调整方法，都围绕这两个问题展开。接下来，我们就来了解一下决策树背后的原理。</strong> </li>
+</ul>
+</li>
+<li><strong>构建决策树</strong><ul>
+<li>接下来讨论如何根据已有的数据集来建立有效的决策树。原则上讲，任意一个数据集上的所有特征都可以被拿来分枝，特征上的任意节点又可以自由组合，所以一个数据集上可以发展出非常非常多棵决策树，其数量可达指数级。在这些树中，总有那么一棵树比其他的树分类效力都好，那样的树叫做”全局最优树“。<ul>
+<li>全局最优:经过某种组合形成的决策树，整体来说分类效果为最好的模型</li>
+<li>局部最优:每一次分枝的时候都向着更好的分类效果分枝，但无法确认如此生成的树在全局上是否是最优的</li>
+</ul>
+</li>
+<li>要在这么多棵决策树中去一次性找到分类效果最佳的那一棵是不可能的，如果通过排列组合来进行筛选，计算量过于大而且低效，因此我们不会这样做。相对的，机器学习研究者们开发了一些有效的算法，能够在合理的时间内构造出具有一定准确率的次最优决策树。</li>
+<li>这些算法基本都执行”贪心策略“，即通过局部的最优来达到我们相信是最接近全局最优（次最优决策树）的结果。</li>
+<li>贪心算法<ul>
+<li>通过实现局部最优来达到接近全局最优结果的算法，所有的树模型都是这样的算法。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>ID3算法构建决策树</strong>  <ul>
+<li>最典型的决策树算法是Hunt算法，该算法是由Hunt等人提出的最早的决策树算法。现代，Hunt算法是许多决策树算法的基础，包括ID3、C4.5和CART等。此处以应用较广、理论基础较为完善的ID3算法的基本原理开始，讨论如何利用局部最优化方法来创建决策模型。</li>
+<li>ID3算法原型见于J.R Quinlan的博士论文，是基础理论较为完善，使用较为广泛的决策树模型算法，在此基础上J.R Quinlan进行优化后，陆续推出了C4.5决策树算法，后者现已称为当前最流行的决策树算法，我们先从ID3 开始讲起，再讨论如何从ID3逐渐优化至C4.5。</li>
+<li>为了要将数据集转化为一棵树，决策树需要找出最佳节点和最佳的分枝方法，而衡量这个“最佳”的指标叫做“不纯度”。 不纯度基于叶子节点来计算的，所以树中的每个节点都会有一个不纯度，并且子节点的不纯度一定是低于父节点的， 也就是说，在同一棵决策树上，叶子节点的不纯度一定是最低的。</li>
+</ul>
+</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
-    <title>fghjhfggjfh</title>
-    <url>/2020/03/13/ghjhfggjfh/</url>
-    <content><![CDATA[<p>,nmbhgbvghjhb ,</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>fghjhg</title>
-    <url>/2020/03/13/fghjhg/</url>
-    <content><![CDATA[<p>gfjfvjbnkbhjkg</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>ghhjgkjh</title>
-    <url>/2020/03/13/ghhjgkjh/</url>
-    <content><![CDATA[<p>gujgjjvhjkh</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>的撒</title>
-    <url>/2020/03/13/%E6%92%92/</url>
-    <content><![CDATA[<p>大师傅士大夫但是</p>
-<p><img src="/2020/03/13/%E6%92%92/cover.jpg" alt></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>sfdf</title>
-    <url>/2020/03/13/sfdf/</url>
-    <content><![CDATA[<p>dffsdsfdsvcs</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>房价高</title>
-    <url>/2020/03/13/%E6%88%BF%E4%BB%B7%E9%AB%98/</url>
-    <content><![CDATA[<p>范德萨范德萨发生</p>
+    <title>������΢��С����</title>
+    <url>/2020/04/06/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
+    <content><![CDATA[<p>������΢��С�������thinkphp5��Ϊ��˽ӿ�api���п����ģ��Լ�������colorui���������ǿС����������̶ȡ�</p>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>����</category>
       </categories>
       <tags>
-        <tag>书</tag>
+        <tag>Hexo - Markdown</tag>
       </tags>
   </entry>
   <entry>
