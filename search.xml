@@ -3,11 +3,7 @@
   <entry>
     <title>log4j2漏洞复现</title>
     <url>/2021/12/17/log4j2%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</url>
-    <content><![CDATA[<p>categories:</p>
-<ul>
-<li>漏洞复现<h1 id="log4j2漏洞复现"><a href="#log4j2漏洞复现" class="headerlink" title="log4j2漏洞复现"></a>log4j2漏洞复现</h1></li>
-</ul>
-<h2 id="log4j2介绍"><a href="#log4j2介绍" class="headerlink" title="log4j2介绍"></a>log4j2介绍</h2><ol>
+    <content><![CDATA[<h1 id="log4j2漏洞复现"><a href="#log4j2漏洞复现" class="headerlink" title="log4j2漏洞复现"></a>log4j2漏洞复现</h1><h2 id="log4j2介绍"><a href="#log4j2介绍" class="headerlink" title="log4j2介绍"></a>log4j2介绍</h2><ol>
 <li><p>log4j2是Java开发常用的日志框架，该漏洞触发的条件低，危害大，属于核弹级的漏洞。该漏洞是由阿里云安全团队发现报告的。</p>
 </li>
 <li><p>该漏洞的CVE编号是：CVE-2021-44228</p>
@@ -52,6 +48,9 @@
 
 <p>通过查看Elasticsearch的日志可以看到我们的攻击日志。</p>
 ]]></content>
+      <categories>
+        <category>漏洞复现</category>
+      </categories>
   </entry>
   <entry>
     <title>机器学习入门基础（二）</title>
